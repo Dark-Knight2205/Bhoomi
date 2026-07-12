@@ -1,0 +1,1037 @@
+/* ==========================================================
+   TIMELINE PAGE
+========================================================== */
+
+.timeline-page{
+
+    position:relative;
+    isolation:isolate;
+
+    width:100vw;
+    height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:22px;
+
+    transition:
+        background 1.8s ease,
+        filter 1.8s ease;
+
+    background:
+
+        radial-gradient(
+            circle at top,
+            #fff9fc,
+            #ffeef6 45%,
+            #ffdce9
+        ),
+
+        url("/backgrounds/sakura-bg.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+}
+/* ==========================================
+   STORY THEMES
+========================================== */
+
+.theme-0{
+
+    background:
+
+    radial-gradient(
+
+        circle at top,
+
+        #fff8fc,
+
+        #ffeef7 40%,
+
+        #ffdce9
+
+    ),
+
+    url("/backgrounds/sakura-bg.png");
+
+    background-size:cover;
+
+}
+
+.theme-1{
+
+    background:
+
+    radial-gradient(
+
+        circle at top,
+
+        #faf5ff,
+
+        #efe3ff 45%,
+
+        #e5d4ff
+
+    ),
+
+    url("/backgrounds/sakura-bg.png");
+
+    background-size:cover;
+
+}
+
+.theme-2{
+
+    background:
+
+    radial-gradient(
+
+        circle at top,
+
+        #fff8ef,
+
+        #ffe7d7 45%,
+
+        #ffd7b5
+
+    ),
+
+    url("/backgrounds/sakura-bg.png");
+
+    background-size:cover;
+
+}
+
+.theme-3{
+
+    background:
+
+    radial-gradient(
+
+        circle at top,
+
+        #fff9f3,
+
+        #fff0db 45%,
+
+        #ffe3c4
+
+    ),
+
+    url("/backgrounds/sakura-bg.png");
+
+    background-size:cover;
+
+}
+
+
+/* ==========================================================
+   MAIN CARD
+========================================================== */
+
+.timeline-card{
+
+    position:relative;
+
+    z-index:2;
+
+    width:min(900px,94vw);
+
+    height:min(860px,94vh);
+
+    display:flex;
+
+    flex-direction:column;
+
+    border-radius:38px;
+
+    background:rgba(255,255,255,.26);
+
+    backdrop-filter:blur(30px);
+    -webkit-backdrop-filter:blur(30px);
+
+    border:1px solid rgba(255,255,255,.45);
+
+    box-shadow:
+        0 30px 90px rgba(255,120,180,.16),
+        0 0 70px rgba(255,200,220,.15);
+
+    overflow:hidden;
+
+    animation:cardEnter .8s cubic-bezier(.22,1,.36,1);
+    transition:
+    background 1.5s ease,
+    box-shadow 1.5s ease,
+    border-color 1.5s ease;
+
+}
+
+/* ==========================================
+   FLOATING PARTICLES
+========================================== */
+
+.timeline-particles{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:0;
+
+}
+
+.particle{
+
+    position:absolute;
+
+    opacity:.22;
+
+    user-select:none;
+
+    animation:particleFloat linear infinite;
+
+    filter:blur(.2px);
+
+}
+
+@keyframes particleFloat{
+
+0%{
+
+transform:
+
+translateY(40px)
+
+rotate(0deg)
+
+scale(.8);
+
+opacity:0;
+
+}
+
+15%{
+
+opacity:.25;
+
+}
+
+50%{
+
+opacity:.38;
+
+}
+
+100%{
+
+transform:
+
+translateY(-140px)
+
+rotate(360deg)
+
+scale(1.2);
+
+opacity:0;
+
+}
+
+}
+
+/* ==========================================================
+   CARD ENTRY
+========================================================== */
+
+@keyframes cardEnter{
+
+0%{
+
+opacity:0;
+
+transform:translateY(30px) scale(.96);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+}
+
+}
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.timeline-header{
+
+    flex-shrink:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    gap:8px;
+
+    padding-top:18px;
+
+}
+
+.header-icon{
+
+    font-size:42px;
+
+    animation:flowerFloat 3s ease-in-out infinite;
+
+}
+
+@keyframes flowerFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+}
+
+.timeline-header h1{
+
+    margin:0;
+
+    font-family:var(--font-great-vibes);
+
+    font-size:56px;
+
+    color:#5b2398;
+
+    line-height:1;
+
+}
+
+.timeline-header p{
+
+    margin:0;
+
+    font-family:var(--font-dancing);
+
+    font-size:20px;
+
+    color:#75607b;
+
+    line-height:1.5;
+
+}
+
+
+/* ==========================================================
+   TIMELINE
+========================================================== */
+
+.timeline-nav{
+
+    flex-shrink:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:18px 0;
+
+}
+
+
+/* ==========================================================
+   DOTS
+========================================================== */
+
+.timeline-dots{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.timeline-dot{
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#f48fb1;
+
+    border:3px solid white;
+
+    box-shadow:0 0 15px rgba(240,98,146,.35);
+
+    transition:.35s;
+
+}
+
+.timeline-dot.active{
+
+    transform:scale(1.35);
+
+    background:#ec407a;
+
+    box-shadow:
+
+        0 0 24px rgba(240,98,146,.75);
+
+}
+
+.timeline-line{
+
+    width:95px;
+
+    height:4px;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        #ff7eb3,
+
+        #c084fc
+
+    );
+
+}
+
+
+/* ==========================================================
+   STORY
+========================================================== */
+
+.story-content{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:0 55px;
+
+    min-height:0;
+
+}
+
+.story-wrapper{
+
+    width:100%;
+
+    max-width:620px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    gap:12px;
+
+}
+
+.story-icon{
+
+    font-size:48px;
+
+}
+/* ==========================================
+   STORY ICON CONTAINER
+========================================== */
+
+.story-icon-container{
+
+    position:relative;
+
+    width:110px;
+
+    height:110px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-bottom:10px;
+
+}
+
+
+/* ==========================================
+   GLOW BASE
+========================================== */
+
+.story-glow{
+
+    position:absolute;
+
+    width:88px;
+
+    height:88px;
+
+    border-radius:50%;
+
+    filter:blur(26px);
+
+    opacity:.65;
+
+    z-index:0;
+
+}
+
+
+.story-icon{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:50px;
+
+}
+
+.story-wrapper h2{
+
+    margin:0;
+
+    font-family:var(--font-great-vibes);
+
+    font-size:60px;
+
+    font-weight:400;
+
+    color:#5b2398;
+
+    line-height:1;
+
+}
+
+.story-wrapper p{
+
+    margin:0;
+
+    max-width:520px;
+
+    white-space:pre-line;
+
+    font-family:var(--font-dancing);
+
+    font-size:25px;
+
+    line-height:1.6;
+
+    color:#75607b;
+
+}
+
+
+/* ==========================================================
+   CONTINUE BUTTON
+========================================================== */
+/* ==========================================
+   STORY GLOW COLORS
+========================================== */
+
+.glow-today{
+
+    background:
+    radial-gradient(circle,
+    rgba(255,120,180,.9),
+    rgba(255,120,180,.15),
+    transparent);
+
+}
+
+.glow-soon{
+
+    background:
+    radial-gradient(circle,
+    rgba(180,120,255,.9),
+    rgba(180,120,255,.15),
+    transparent);
+
+}
+
+.glow-one-day{
+
+    background:
+    radial-gradient(circle,
+    rgba(255,185,120,.9),
+    rgba(255,185,120,.18),
+    transparent);
+
+}
+
+.glow-future{
+
+    background:
+    radial-gradient(circle,
+    rgba(255,220,120,.95),
+    rgba(255,220,120,.20),
+    transparent);
+
+}
+
+.story-icon-container::before{
+
+    content:"✨";
+
+    position:absolute;
+
+    top:-8px;
+
+    right:-8px;
+
+    font-size:18px;
+
+    opacity:.8;
+
+    animation:sparkleFloat 2.5s ease-in-out infinite;
+
+}
+
+.story-icon-container::after{
+
+    content:"✦";
+
+    position:absolute;
+
+    bottom:-6px;
+
+    left:-8px;
+
+    font-size:14px;
+
+    opacity:.7;
+
+    animation:sparkleFloatReverse 3s ease-in-out infinite;
+
+}
+
+@keyframes sparkleFloat{
+
+0%,100%{
+
+transform:translateY(0) rotate(0deg);
+
+opacity:.6;
+
+}
+
+50%{
+
+transform:translateY(-8px) rotate(20deg);
+
+opacity:1;
+
+}
+
+}
+
+@keyframes sparkleFloatReverse{
+
+0%,100%{
+
+transform:translateY(0) rotate(0deg);
+
+opacity:.5;
+
+}
+
+50%{
+
+transform:translateY(8px) rotate(-20deg);
+
+opacity:.9;
+
+}
+
+}
+/* ==========================================
+   CONTINUE BUTTON
+========================================== */
+
+.continue-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    width:360px;
+
+    height:78px;
+
+    margin:0 auto;
+
+    border:none;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    background:linear-gradient(
+        135deg,
+        #ff6fa9,
+        #d46af5
+    );
+
+    color:white;
+
+    font-family:var(--font-dancing);
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    box-shadow:
+        0 15px 45px rgba(240,98,146,.35);
+
+    transition:.35s;
+
+}
+
+.continue-btn:hover{
+
+    transform:translateY(-4px) scale(1.03);
+
+    box-shadow:
+        0 22px 55px rgba(240,98,146,.5);
+
+}
+
+.continue-btn:active{
+
+    transform:scale(.97);
+
+}
+
+.continue-btn span{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.continue-arrow{
+
+    font-size:1.3rem;
+
+    transition:.35s;
+
+}
+
+.continue-btn:hover .continue-arrow{
+
+    transform:translateX(8px);
+
+}
+
+@keyframes buttonFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-4px);
+
+}
+
+}
+
+@keyframes buttonShine{
+
+0%{
+
+transform:translateX(-140%) skewX(-25deg);
+
+}
+
+100%{
+
+transform:translateX(220%) skewX(-25deg);
+
+}
+
+}
+
+/* ==========================================
+   DYNAMIC AMBIENT GLOW
+========================================== */
+
+.timeline-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-45%;
+
+    pointer-events:none;
+
+    border-radius:50%;
+
+    opacity:.75;
+
+    transition:
+        background 1.6s ease,
+        opacity .8s ease;
+
+    animation:
+        ambientGlow 8s ease-in-out infinite;
+
+}
+/* ==========================================
+   CARD COLOR THEMES
+========================================== */
+
+.card-theme-0::before{
+
+    background:
+
+    radial-gradient(
+
+        circle,
+
+        rgba(255,170,205,.28),
+
+        transparent 72%
+
+    );
+
+}
+
+.card-theme-1::before{
+
+    background:
+
+    radial-gradient(
+
+        circle,
+
+        rgba(195,165,255,.30),
+
+        transparent 72%
+
+    );
+
+}
+
+.card-theme-2::before{
+
+    background:
+
+    radial-gradient(
+
+        circle,
+
+        rgba(255,205,150,.28),
+
+        transparent 72%
+
+    );
+
+}
+
+.card-theme-3::before{
+
+    background:
+
+    radial-gradient(
+
+        circle,
+
+        rgba(255,235,170,.30),
+
+        transparent 72%
+
+    );
+
+}
+
+@keyframes ambientGlow{
+
+0%,100%{
+
+transform:
+scale(1)
+rotate(0deg);
+
+opacity:.70;
+
+}
+
+50%{
+
+transform:
+scale(1.12)
+rotate(8deg);
+
+opacity:1;
+
+}
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media(max-width:768px){
+
+.timeline-page{
+
+padding:12px;
+
+}
+
+.timeline-card{
+
+width:100%;
+
+height:95vh;
+
+}
+
+.timeline-header{
+
+padding-top:16px;
+
+}
+
+.timeline-header h1{
+
+font-size:42px;
+
+}
+
+.timeline-header p{
+
+font-size:17px;
+
+}
+
+.timeline-nav{
+
+margin:14px 0;
+
+}
+
+.timeline-line{
+
+width:50px;
+
+}
+
+.timeline-dot{
+
+width:16px;
+
+height:16px;
+
+}
+
+.story-content{
+
+padding:0 20px;
+
+}
+
+.story-icon{
+
+font-size:40px;
+
+}
+
+.story-wrapper h2{
+
+font-size:42px;
+
+}
+
+.story-wrapper p{
+
+font-size:20px;
+
+}
+
+/* ==========================================================
+   CONTINUE BUTTON AREA
+========================================================== */
+
+.bottom-area{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-top:auto;
+
+    padding:22px 0 28px;
+
+    position:relative;
+
+    z-index:20;
+
+}
+}

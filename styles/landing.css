@@ -1,0 +1,428 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+/* ---------------- HERO ---------------- */
+.hero{
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            rgba(255,240,245,.45),
+            rgba(255,228,225,.45)
+        ),
+        url("/backgrounds/sakura-bg.png");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+
+    background-image:url("/textures/floral-texture.png");
+    background-repeat:repeat;
+    background-size:700px auto;
+
+    opacity:.18;
+
+    pointer-events:none;
+    z-index:0;
+}
+
+/* Content */
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 700px;
+  padding: 20px;
+}
+.hero-content{
+
+    position:relative;
+
+    z-index:100;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* Logo */
+
+.logo{
+    font-family: var(--font-dancing);
+    font-size: 2.6rem;
+    color:#ba68c8;
+}
+
+
+/* Main Heading */
+
+.hero-content h1{
+    font-family: var(--font-great-vibes);
+    font-size:6rem;
+    color:#4a148c;
+}
+/* Subtitle */
+
+.subtitle{
+
+    font-family: "Dancing Script", cursive;
+
+    font-size: 2rem;
+
+    color: #5d3a5a;
+
+    line-height: 1.8;
+
+    margin-top: 20px;
+
+    margin-bottom: 45px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.5px;
+
+    text-shadow: 0 2px 8px rgba(255,255,255,0.4);
+
+}
+
+/* ---------------- BUTTON ---------------- */
+
+.start-btn {
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 45px;
+
+    padding: 18px 60px;
+
+    border: 2px solid rgba(255,255,255,.45);
+    border-radius: 999px;
+
+    cursor: pointer;
+
+    background: linear-gradient(
+        135deg,
+        #ff6fa9 0%,
+        #f06292 40%,
+        #ba68c8 100%
+    );
+
+    color: white;
+
+    font-family: "Dancing Script", cursive;
+    font-size: 2rem;
+    font-weight: 700;
+
+    letter-spacing: .5px;
+
+    position: relative;
+    overflow: hidden;
+
+    transition: all .35s ease;
+
+    box-shadow:
+        0 10px 35px rgba(240,98,146,.45),
+        0 0 25px rgba(240,98,146,.45),
+        0 0 55px rgba(186,104,200,.30);
+
+    animation: glowPulse 2.2s ease-in-out infinite;
+}
+
+.start-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-130%;
+
+    width:70%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.8),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+
+    animation:shine 3.5s infinite;
+}
+
+.start-btn:hover{
+
+    transform:translateY(-6px) scale(1.08);
+
+    box-shadow:
+        0 18px 55px rgba(240,98,146,.6),
+        0 0 40px rgba(240,98,146,.8),
+        0 0 80px rgba(186,104,200,.55);
+
+}
+
+.start-btn:active{
+
+    transform:scale(.96);
+
+}
+
+@keyframes glowPulse{
+
+0%,100%{
+
+box-shadow:
+0 10px 35px rgba(240,98,146,.45),
+0 0 20px rgba(240,98,146,.35),
+0 0 45px rgba(186,104,200,.25);
+
+}
+
+50%{
+
+box-shadow:
+0 18px 55px rgba(240,98,146,.7),
+0 0 40px rgba(240,98,146,.8),
+0 0 90px rgba(186,104,200,.6);
+
+}
+
+}
+
+@keyframes shine{
+
+0%{
+
+left:-130%;
+
+}
+
+100%{
+
+left:150%;
+
+}
+
+}
+
+.start-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+
+  box-shadow:
+    0 20px 50px rgba(240,98,146,.45),
+    0 0 40px rgba(186,104,200,.50);
+}
+
+/* ---------------- PETALS ---------------- */
+
+.petal {
+  position: absolute;
+
+  top: -50px;
+
+  width: 40px;
+  height: 40px;
+
+  background-image: url("/petals/kp2_dm.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  opacity: .9;
+
+  pointer-events: none;
+
+  z-index: 1;
+
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
+
+}
+
+/* ---------------- HEARTS ---------------- */
+
+.heart{
+
+    position:fixed;
+
+    font-size:30px;
+
+    pointer-events:none;
+
+    z-index:2;
+
+    animation:float 6s ease-in-out infinite;
+
+}
+
+.heart1 {
+  left: 25%;
+  top: 25%;
+}
+
+.heart2 {
+  right: 40%;
+  top: 120%;
+}
+
+.heart3 {
+  left: 70%;
+  bottom: 80%;
+}
+
+@keyframes float {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+
+}
+
+/* ---------------- CURSOR ---------------- */
+
+.cursorDot {
+
+  position: fixed;
+
+  width: 16px;
+  height: 16px;
+
+  border-radius: 50%;
+
+  background: #f06292;
+
+  pointer-events: none;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 99999;
+
+  box-shadow: 0 0 18px #f06292;
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media (max-width:768px){
+
+.hero-content h1{
+font-size:4rem;
+}
+
+.subtitle{
+font-size:1rem;
+}
+
+.start-btn{
+padding:15px 35px;
+font-size:1rem;
+}
+
+.logo{
+font-size:1.8rem;
+}
+
+}
+.start-btn{
+    animation:
+        glowPulse 2.2s ease-in-out infinite,
+        floatButton 3s ease-in-out infinite;
+}
+
+@keyframes floatButton{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-6px);
+}
+
+}
+.cornerTopLeft{
+    position:absolute;
+    top:0;
+    left:0;
+
+    width:340px;
+
+    opacity:.22;
+
+    pointer-events:none;
+
+    z-index:1;
+}
+
+.cornerTopRight{
+    position:absolute;
+    top:0;
+    right:0;
+
+    width:340px;
+
+    opacity:.22;
+
+    pointer-events:none;
+
+    z-index:1;
+}
+
+.bottomLeft{
+    position:absolute;
+    bottom:0;
+    left:0;
+
+    width:420px;
+
+    opacity:.18;
+
+    pointer-events:none;
+
+    z-index:1;
+}

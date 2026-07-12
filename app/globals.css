@@ -1,0 +1,237 @@
+@import "tailwindcss";
+
+/* ===========================
+   GLOBAL RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ===========================
+   ROOT VARIABLES
+=========================== */
+
+:root{
+
+    --background:#fff0f5;
+    --foreground:#171717;
+
+    --color-background:var(--background);
+    --color-foreground:var(--foreground);
+
+    --font-sans:var(--font-geist-sans);
+    --font-mono:var(--font-geist-mono);
+
+}
+
+/* ===========================
+   HTML & BODY
+=========================== */
+
+html,
+body{
+
+    width:100%;
+    min-height:100%;
+
+    margin:0;
+    padding:0;
+
+    overflow-x:hidden;
+
+    background:#fff0f5;
+
+    color:#171717;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+/* ===========================
+   NEXT ROOT
+=========================== */
+
+body{
+
+    position:relative;
+
+}
+
+#__next{
+
+    width:100%;
+    min-height:100%;
+
+}
+
+/* ===========================
+   IMAGES
+=========================== */
+
+img{
+
+    display:block;
+
+    max-width:100%;
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+button{
+
+    font-family:inherit;
+
+}
+.floating-hearts{
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    overflow: hidden;
+}
+
+.heart{
+    position: absolute;
+
+    font-size: 32px;
+
+    animation: float 6s ease-in-out infinite;
+
+    opacity: .28;
+}
+
+.heart1{
+    left: 8%;
+    top: 22%;
+}
+
+.heart2{
+    right: 10%;
+    top: 35%;
+}
+
+.heart3{
+    right: 18%;
+    bottom: 15%;
+}
+
+@keyframes float{
+
+0%,100%{
+    transform: translateY(0);
+}
+
+50%{
+    transform: translateY(-18px);
+}
+
+}
+/* ==========================================
+   MUSIC PLAYER
+========================================== */
+
+.music-player{
+
+    position:fixed;
+
+    right:32px;
+
+    bottom:32px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:12px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,.35);
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.15);
+
+    z-index:9999;
+
+    transition:.35s ease;
+
+}
+
+
+.music-player.expanded{
+
+    padding-right:22px;
+
+}
+
+
+.music-toggle{
+
+    width:54px;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:22px;
+
+    background:white;
+
+    transition:.3s;
+
+}
+
+
+.music-toggle:hover{
+
+    transform:scale(1.08);
+
+}
+
+
+.music-controls{
+
+    width:0;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+}
+
+
+.music-player.expanded .music-controls{
+
+    width:120px;
+
+}
+
+
+.music-controls input{
+
+    width:100%;
+
+}

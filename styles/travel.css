@@ -1,0 +1,2017 @@
+/* ==========================================================
+   PAGE 5 : TRAVEL
+   Sakura Journey
+========================================================== */
+
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+
+/* ==========================================================
+   ROOT
+========================================================== */
+
+:root{
+
+    --white:#ffffff;
+
+    --cream:#FFF8F1;
+
+    --gold:#FFE8A3;
+
+    --shadow:rgba(0,0,0,.32);
+
+}
+
+
+/* ==========================================================
+   PAGE
+========================================================== */
+
+.travel-page{
+
+    position:relative;
+
+    width:100vw;
+    height:100vh;
+
+    overflow:hidden;
+
+    isolation:isolate;
+
+    background:#8dcdf7;
+
+}
+
+
+/* ==========================================================
+   BACKGROUND IMAGE
+========================================================== */
+
+.travel-background{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:url("/backgrounds/mountain-valley.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    filter:
+
+        saturate(1.05)
+
+        contrast(1.03)
+
+        brightness(1.02);
+
+    animation:
+
+        cameraFloat 65s ease-in-out infinite;
+
+    z-index:1;
+
+}
+
+
+/* ==========================================================
+   LIGHT OVERLAY
+========================================================== */
+
+.travel-background::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(
+
+            circle at 15% 12%,
+
+            rgba(255,245,190,.28),
+
+            transparent 45%
+
+        ),
+
+        linear-gradient(
+
+            to bottom,
+
+            rgba(255,255,255,.04),
+
+            rgba(0,0,0,.12)
+
+        );
+
+}
+
+
+/* ==========================================================
+   VIGNETTE
+========================================================== */
+
+.travel-background::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            transparent 40%,
+
+            rgba(0,0,0,.16) 100%
+
+        );
+
+}
+
+
+/* ==========================================================
+   LAYERS
+========================================================== */
+
+.layer{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+}
+
+.layer-clouds{
+
+    z-index:5;
+
+}
+
+.layer-petals{
+
+    z-index:10;
+
+}
+
+.layer-butterflies{
+
+    z-index:14;
+
+}
+
+.layer-particles{
+
+    z-index:18;
+
+}
+
+.layer-atmosphere{
+
+    z-index:22;
+
+}
+
+.layer-content{
+
+    z-index:40;
+
+    pointer-events:auto;
+
+}
+/* ==========================================================
+   ATMOSPHERE
+========================================================== */
+
+/* ===============================
+   SUN GLOW
+=============================== */
+
+.sun-glow{
+
+    position:absolute;
+
+    top:-10%;
+    left:-8%;
+
+    width:520px;
+    height:520px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(255,248,215,.85) 0%,
+
+            rgba(255,240,180,.45) 28%,
+
+            rgba(255,235,170,.18) 55%,
+
+            transparent 76%
+
+        );
+
+    filter:blur(42px);
+
+    opacity:.9;
+
+    animation:
+
+        sunPulse 9s ease-in-out infinite;
+
+}
+
+
+/* ===============================
+   LIGHT RAYS
+=============================== */
+
+.light-rays{
+
+    position:absolute;
+
+    top:-12%;
+    left:-12%;
+
+    width:170%;
+    height:170%;
+
+    background:
+
+        repeating-linear-gradient(
+
+            112deg,
+
+            rgba(255,255,255,.07) 0px,
+
+            rgba(255,255,255,.02) 75px,
+
+            transparent 145px
+
+        );
+
+    mix-blend-mode:screen;
+
+    filter:blur(10px);
+
+    opacity:.18;
+
+    transform:rotate(-7deg);
+
+    animation:
+
+        raysMove 18s ease-in-out infinite;
+
+}
+
+
+/* ===============================
+   MORNING BLOOM
+=============================== */
+
+.morning-bloom{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(
+
+            circle at 16% 14%,
+
+            rgba(255,255,255,.08),
+
+            transparent 42%
+
+        ),
+
+        radial-gradient(
+
+            circle at 82% 22%,
+
+            rgba(255,255,255,.05),
+
+            transparent 35%
+
+        );
+
+}
+
+
+/* ===============================
+   VALLEY HAZE
+=============================== */
+
+.valley-haze{
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:30%;
+
+    background:
+
+        linear-gradient(
+
+            to top,
+
+            rgba(255,255,255,.22),
+
+            rgba(255,255,255,.08),
+
+            transparent
+
+        );
+
+    filter:blur(20px);
+
+    opacity:.65;
+
+    animation:
+
+        hazeMove 14s ease-in-out infinite;
+
+}
+
+
+/* ==========================================================
+   CLOUDS
+========================================================== */
+
+.travel-cloud{
+
+    position:absolute;
+
+    width:20vw;
+
+    min-width:180px;
+    max-width:330px;
+
+    pointer-events:none;
+
+    user-select:none;
+
+    opacity:.14;
+
+    filter:blur(1.5px);
+
+}
+
+
+/* ------------------------------
+   CLOUD ONE
+------------------------------ */
+
+.cloud-one{
+
+    top:8%;
+
+    left:-18%;
+
+    animation:
+
+        cloudOneMove 140s linear infinite;
+
+}
+
+
+/* ------------------------------
+   CLOUD TWO
+------------------------------ */
+
+.cloud-two{
+
+    top:20%;
+
+    right:-18%;
+
+    transform:scale(.8);
+
+    opacity:.12;
+
+    animation:
+
+        cloudTwoMove 160s linear infinite;
+
+}
+
+
+/* ------------------------------
+   CLOUD THREE
+------------------------------ */
+
+.cloud-three{
+
+    top:32%;
+
+    left:-25%;
+
+    transform:scale(1.15);
+
+    opacity:.18;
+
+    animation:
+
+        cloudThreeMove 180s linear infinite;
+
+}
+
+
+/* ------------------------------
+   EXTRA DEPTH
+------------------------------ */
+
+.cloud-back{
+
+    opacity:.08;
+
+    transform:scale(.75);
+
+}
+
+.cloud-middle{
+
+    opacity:.14;
+
+}
+
+.cloud-front{
+
+    opacity:.20;
+
+    transform:scale(1.18);
+
+}
+/* ==========================================================
+   SAKURA PETALS
+========================================================== */
+
+.petals-container{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+}
+
+.travel-petal{
+
+    position:absolute;
+
+    top:-80px;
+
+    width:34px;
+
+    height:auto;
+
+    opacity:.58;
+
+    pointer-events:none;
+
+    user-select:none;
+
+    filter:
+
+        drop-shadow(
+            0 4px 8px
+            rgba(255,180,220,.20)
+        );
+
+    animation-name:petalFall;
+
+    animation-timing-function:linear;
+
+    animation-iteration-count:infinite;
+
+}
+
+/* ==========================================================
+   BUTTERFLIES
+========================================================== */
+
+.travel-butterfly{
+
+    position:absolute;
+
+    width:48px;
+
+    pointer-events:none;
+
+    user-select:none;
+
+    filter:
+
+        drop-shadow(
+            0 6px 14px
+            rgba(255,255,255,.18)
+        );
+
+}
+
+.butterfly-one{
+
+    top:38%;
+
+    right:20%;
+
+    animation:
+
+        butterflyOne 18s ease-in-out infinite;
+
+}
+
+.butterfly-two{
+
+    top:62%;
+
+    right:12%;
+
+    width:38px;
+
+    animation:
+
+        butterflyTwo 22s ease-in-out infinite;
+
+}
+
+/* ==========================================================
+   GLOW PARTICLES
+========================================================== */
+
+.glow-particle{
+
+    position:absolute;
+
+    width:4px;
+
+    height:4px;
+
+    border-radius:50%;
+
+    background:#FFF5B8;
+
+    opacity:.75;
+
+    box-shadow:
+
+        0 0 10px rgba(255,245,170,.9),
+
+        0 0 24px rgba(255,235,150,.45);
+
+    animation:
+
+        glowFloat ease-in-out infinite;
+
+}
+
+/* ==========================================================
+   PARTICLE POSITIONS
+========================================================== */
+
+.glow-particle:nth-child(1){
+
+left:10%;
+bottom:12%;
+
+animation-duration:12s;
+
+}
+
+.glow-particle:nth-child(2){
+
+left:18%;
+bottom:18%;
+
+animation-duration:15s;
+
+animation-delay:2s;
+
+}
+
+.glow-particle:nth-child(3){
+
+left:30%;
+bottom:10%;
+
+animation-duration:14s;
+
+animation-delay:5s;
+
+}
+
+.glow-particle:nth-child(4){
+
+left:42%;
+bottom:18%;
+
+animation-duration:17s;
+
+animation-delay:3s;
+
+}
+
+.glow-particle:nth-child(5){
+
+left:54%;
+bottom:12%;
+
+animation-duration:13s;
+
+animation-delay:1s;
+
+}
+
+.glow-particle:nth-child(6){
+
+left:66%;
+bottom:18%;
+
+animation-duration:16s;
+
+animation-delay:4s;
+
+}
+
+.glow-particle:nth-child(7){
+
+left:78%;
+bottom:14%;
+
+animation-duration:18s;
+
+animation-delay:2s;
+
+}
+
+.glow-particle:nth-child(8){
+
+left:90%;
+bottom:20%;
+
+animation-duration:14s;
+
+animation-delay:6s;
+
+}
+
+.glow-particle:nth-child(9){
+
+left:22%;
+bottom:26%;
+
+animation-duration:16s;
+
+animation-delay:7s;
+
+}
+
+.glow-particle:nth-child(10){
+
+left:72%;
+bottom:24%;
+
+animation-duration:18s;
+
+animation-delay:5s;
+
+}
+/* ==========================================================
+   CONTENT LAYOUT
+========================================================== */
+
+.travel-content{
+
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    padding-right:8vw;
+
+}
+
+/* ==========================================================
+   STORY
+========================================================== */
+
+.travel-story{
+
+    width:min(540px,90vw);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    animation:storyReveal 1.8s ease;
+
+}
+
+/* ==========================================================
+   SMALL QUOTE
+========================================================== */
+
+.travel-quote{
+
+    margin-bottom:26px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:.95rem;
+
+    font-style:italic;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:rgba(255,250,220,.88);
+
+    text-shadow:
+
+        0 2px 12px rgba(0,0,0,.35);
+
+}
+
+/* ==========================================================
+   HEADING
+========================================================== */
+
+.travel-story h1{
+
+    font-family:var(--font-great-vibes);
+
+    font-size:clamp(4rem,5vw,5.8rem);
+
+    font-weight:400;
+
+    line-height:1;
+
+    color:#ffffff;
+
+    text-shadow:
+
+        0 10px 30px rgba(0,0,0,.42);
+
+}
+
+/* ==========================================================
+   DESCRIPTION
+========================================================== */
+
+.travel-story p{
+
+    margin-top:34px;
+
+    max-width:500px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:1.28rem;
+
+    font-weight:400;
+
+    line-height:2;
+
+    color:rgba(255,255,255,.94);
+
+    text-shadow:
+
+        0 4px 16px rgba(0,0,0,.42);
+
+}
+
+/* ==========================================================
+   HIGHLIGHT WORDS
+========================================================== */
+
+.travel-story strong{
+
+    color:#FFE7A5;
+
+    font-weight:600;
+
+}
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+.travel-button{
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin-top:48px;
+
+    padding:18px 56px;
+
+    border:none;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+    letter-spacing:.08em;
+
+    color:#5C4322;
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            #FFF7D8,
+
+            #F3D989
+
+        );
+
+    box-shadow:
+
+        0 16px 38px rgba(0,0,0,.24),
+
+        0 0 30px rgba(255,235,170,.35);
+
+    transition:
+
+        transform .35s,
+
+        box-shadow .35s;
+
+}
+
+/* Shine */
+
+.travel-button::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:60%;
+
+    height:100%;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(255,255,255,.65),
+
+            transparent
+
+        );
+
+    transform:skewX(-25deg);
+
+    animation:buttonShine 4s infinite;
+
+}
+
+/* Hover */
+
+.travel-button:hover{
+
+    transform:
+
+        translateY(-5px)
+
+        scale(1.05);
+
+    box-shadow:
+
+        0 24px 55px rgba(0,0,0,.28),
+
+        0 0 45px rgba(255,240,180,.55);
+
+}
+/* ==========================================================
+   CAMERA
+========================================================== */
+
+@keyframes cameraFloat{
+
+    0%{
+
+        transform:
+            scale(1)
+            translate(0,0);
+
+    }
+
+    50%{
+
+        transform:
+            scale(1.015)
+            translate(-8px,-10px);
+
+    }
+
+    100%{
+
+        transform:
+            scale(1)
+            translate(0,0);
+
+    }
+
+}
+
+
+/* ==========================================================
+   CLOUDS
+========================================================== */
+
+@keyframes cloudOneMove{
+
+    from{
+
+        transform:
+            translateX(0);
+
+    }
+
+    to{
+
+        transform:
+            translateX(140vw);
+
+    }
+
+}
+
+@keyframes cloudTwoMove{
+
+    from{
+
+        transform:
+            translateX(0);
+
+    }
+
+    to{
+
+        transform:
+            translateX(-145vw);
+
+    }
+
+}
+
+@keyframes cloudThreeMove{
+
+    from{
+
+        transform:
+            translateX(0);
+
+    }
+
+    to{
+
+        transform:
+            translateX(160vw);
+
+    }
+
+}
+
+
+/* ==========================================================
+   PETALS
+========================================================== */
+
+@keyframes petalFall{
+
+    0%{
+
+        transform:
+            translateY(-100px)
+            rotate(0deg);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:.55;
+
+    }
+
+    25%{
+
+        transform:
+            translate(-25px,25vh)
+            rotate(90deg);
+
+    }
+
+    50%{
+
+        transform:
+            translate(35px,55vh)
+            rotate(180deg);
+
+    }
+
+    75%{
+
+        transform:
+            translate(-18px,82vh)
+            rotate(270deg);
+
+    }
+
+    100%{
+
+        transform:
+            translate(30px,115vh)
+            rotate(360deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* ==========================================================
+   BUTTERFLIES
+========================================================== */
+
+@keyframes butterflyOne{
+
+    0%,100%{
+
+        transform:
+            translate(0,0)
+            rotate(-8deg);
+
+    }
+
+    25%{
+
+        transform:
+            translate(-20px,-18px)
+            rotate(5deg);
+
+    }
+
+    50%{
+
+        transform:
+            translate(12px,-35px)
+            rotate(-4deg);
+
+    }
+
+    75%{
+
+        transform:
+            translate(32px,-8px)
+            rotate(6deg);
+
+    }
+
+}
+
+@keyframes butterflyTwo{
+
+    0%,100%{
+
+        transform:
+            translate(0,0);
+
+    }
+
+    35%{
+
+        transform:
+            translate(22px,-15px);
+
+    }
+
+    70%{
+
+        transform:
+            translate(-12px,-32px);
+
+    }
+
+}
+
+
+/* ==========================================================
+   PARTICLES
+========================================================== */
+
+@keyframes glowFloat{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translateY(25px)
+            scale(.5);
+
+    }
+
+    20%{
+
+        opacity:.9;
+
+    }
+
+    50%{
+
+        opacity:.45;
+
+        transform:
+            translateY(-20px)
+            translateX(8px)
+            scale(1);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translateY(-60px)
+            translateX(-8px)
+            scale(.45);
+
+    }
+
+}
+
+
+/* ==========================================================
+   SUN
+========================================================== */
+
+@keyframes sunPulse{
+
+    0%,100%{
+
+        transform:
+            scale(1);
+
+        opacity:.88;
+
+    }
+
+    50%{
+
+        transform:
+            scale(1.08);
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* ==========================================================
+   RAYS
+========================================================== */
+
+@keyframes raysMove{
+
+    0%,100%{
+
+        transform:
+            rotate(-7deg)
+            translateX(0);
+
+    }
+
+    50%{
+
+        transform:
+            rotate(-5deg)
+            translateX(18px);
+
+    }
+
+}
+
+
+/* ==========================================================
+   HAZE
+========================================================== */
+
+@keyframes hazeMove{
+
+    0%,100%{
+
+        opacity:.55;
+
+        transform:
+            translateY(0);
+
+    }
+
+    50%{
+
+        opacity:.75;
+
+        transform:
+            translateY(-10px);
+
+    }
+
+}
+
+
+/* ==========================================================
+   BUTTON SHINE
+========================================================== */
+
+@keyframes buttonShine{
+
+    0%{
+
+        left:-120%;
+
+    }
+
+    100%{
+
+        left:180%;
+
+    }
+
+}
+
+
+/* ==========================================================
+   STORY
+========================================================== */
+
+@keyframes storyReveal{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:1024px){
+
+.travel-content{
+
+padding-right:5vw;
+
+}
+
+.travel-story{
+
+width:min(480px,90vw);
+
+}
+
+.travel-story h1{
+
+font-size:3.6rem;
+
+}
+
+.travel-story p{
+
+font-size:1.15rem;
+
+}
+
+}
+
+
+/* ------------------------------ */
+
+@media(max-width:768px){
+
+.travel-content{
+
+justify-content:center;
+
+padding:30px;
+
+}
+
+.travel-story{
+
+align-items:center;
+
+text-align:center;
+
+}
+
+.travel-story h1{
+
+font-size:3rem;
+
+}
+
+.travel-story p{
+
+font-size:1.08rem;
+
+line-height:1.8;
+
+}
+
+.travel-button{
+
+width:100%;
+
+justify-content:center;
+
+}
+
+.travel-cloud{
+
+display:none;
+
+}
+
+}
+
+
+/* ------------------------------ */
+
+@media(max-height:780px){
+
+.travel-story h1{
+
+font-size:3.2rem;
+
+}
+
+.travel-story p{
+
+font-size:1.08rem;
+
+line-height:1.8;
+
+}
+
+.travel-button{
+
+margin-top:28px;
+
+padding:16px 42px;
+
+}
+
+}
+/* ==========================================================
+   CSS BIRDS
+========================================================== */
+
+.layer-birds{
+
+    z-index:8;
+
+    pointer-events:none;
+
+}
+
+.bird{
+
+    position:absolute;
+
+    width:26px;
+
+    height:12px;
+
+    opacity:.42;
+
+    animation:birdFly linear infinite;
+
+}
+
+/* Wings */
+
+.bird::before,
+.bird::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:14px;
+
+    height:8px;
+
+    border:2px solid rgba(40,40,40,.65);
+
+    border-color:rgba(40,40,40,.65) transparent transparent transparent;
+
+    border-radius:50%;
+
+}
+
+/* Left wing */
+
+.bird::before{
+
+    left:0;
+
+    transform-origin:right center;
+
+    animation:wingLeft .45s ease-in-out infinite;
+
+}
+
+/* Right wing */
+
+.bird::after{
+
+    right:0;
+
+    transform-origin:left center;
+
+    animation:wingRight .45s ease-in-out infinite;
+
+}
+
+/* Bird positions */
+
+.bird-1{
+
+    top:12%;
+
+    left:-10%;
+
+    animation-duration:26s;
+
+}
+
+.bird-2{
+
+    top:18%;
+
+    left:-18%;
+
+    transform:scale(.8);
+
+    animation-duration:32s;
+
+    animation-delay:6s;
+
+}
+
+.bird-3{
+
+    top:10%;
+
+    left:-22%;
+
+    transform:scale(.65);
+
+    animation-duration:38s;
+
+    animation-delay:12s;
+
+}
+
+.bird-4{
+
+    top:22%;
+
+    left:-15%;
+
+    transform:scale(.9);
+
+    animation-duration:42s;
+
+    animation-delay:18s;
+
+}
+/* ==========================================================
+   BIRD FLIGHT
+========================================================== */
+
+@keyframes birdFly{
+
+    0%{
+
+        transform:
+            translateX(0)
+            translateY(0);
+
+        opacity:0;
+
+    }
+
+    8%{
+
+        opacity:.42;
+
+    }
+
+    30%{
+
+        transform:
+            translateX(35vw)
+            translateY(-10px);
+
+    }
+
+    60%{
+
+        transform:
+            translateX(75vw)
+            translateY(8px);
+
+    }
+
+    100%{
+
+        transform:
+            translateX(125vw)
+            translateY(-5px);
+
+        opacity:0;
+
+    }
+
+}
+
+/* Wing flapping */
+
+@keyframes wingLeft{
+
+    0%,100%{
+
+        transform:
+            rotate(18deg);
+
+    }
+
+    50%{
+
+        transform:
+            rotate(-12deg);
+
+    }
+
+}
+
+@keyframes wingRight{
+
+    0%,100%{
+
+        transform:
+            rotate(-18deg);
+
+    }
+
+    50%{
+
+        transform:
+            rotate(12deg);
+
+    }
+
+}
+/*=========================================================
+LEAVES
+=========================================================*/
+
+.layer-leaves{
+
+    z-index:12;
+
+}
+
+.leaves-container{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+}
+.leaf{
+
+    position:absolute;
+
+    top:-120px;
+
+    width:18px;
+
+    height:28px;
+
+    transform-origin:center;
+
+    opacity:.55;
+
+    animation:
+
+        leafFall linear infinite,
+
+        leafSpin 3s ease-in-out infinite;
+
+}
+.leaf-1{
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #8ED85C,
+
+            #58A931
+
+        );
+
+    clip-path:polygon(
+
+        50% 0%,
+
+        78% 8%,
+
+        95% 30%,
+
+        100% 58%,
+
+        82% 88%,
+
+        50% 100%,
+
+        18% 88%,
+
+        0% 58%,
+
+        5% 30%,
+
+        22% 8%
+
+    );
+
+}
+.leaf-2{
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #7BC44B,
+
+            #4F9631
+
+        );
+
+    clip-path:ellipse(45% 50%);
+
+    border-radius:0 100% 0 100%;
+
+}
+.leaf-3{
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #96E86A,
+
+            #67B73D
+
+        );
+
+    clip-path:polygon(
+
+        50% 0,
+
+        80% 12%,
+
+        100% 45%,
+
+        90% 82%,
+
+        50% 100%,
+
+        10% 82%,
+
+        0 45%,
+
+        20% 12%
+
+    );
+
+}
+.leaf::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    top:2px;
+
+    width:2px;
+
+    height:24px;
+
+    background:rgba(255,255,255,.45);
+
+    transform:translateX(-50%);
+
+    border-radius:50px;
+
+}
+.leaf::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    top:9px;
+
+    width:10px;
+
+    height:10px;
+
+    border-top:1px solid rgba(255,255,255,.25);
+
+    border-left:1px solid transparent;
+
+    border-right:1px solid transparent;
+
+    transform:
+
+        translateX(-50%)
+
+        rotate(40deg);
+
+}
+@keyframes leafFall{
+
+    0%{
+
+        top:-80px;
+
+        transform:
+
+            translateX(0)
+
+            rotate(0deg);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:.55;
+
+    }
+
+    20%{
+
+        transform:
+
+            translateX(-25px)
+
+            rotate(60deg);
+
+    }
+
+    40%{
+
+        transform:
+
+            translateX(35px)
+
+            rotate(150deg);
+
+    }
+
+    60%{
+
+        transform:
+
+            translateX(-45px)
+
+            rotate(220deg);
+
+    }
+
+    80%{
+
+        transform:
+
+            translateX(30px)
+
+            rotate(300deg);
+
+    }
+
+    100%{
+
+        top:110vh;
+
+        transform:
+
+            translateX(-20px)
+
+            rotate(380deg);
+
+        opacity:0;
+
+    }
+
+}
+@keyframes leafSpin{
+
+    0%,100%{
+
+        margin-left:0;
+
+    }
+
+    25%{
+
+        margin-left:-10px;
+
+    }
+
+    50%{
+
+        margin-left:10px;
+
+    }
+
+    75%{
+
+        margin-left:-5px;
+
+    }
+
+}
+.leaf:nth-child(4n){
+
+    filter:hue-rotate(10deg);
+
+}
+
+.leaf:nth-child(5n){
+
+    filter:hue-rotate(-12deg);
+
+}
+
+.leaf:nth-child(7n){
+
+    filter:brightness(.9);
+
+}
+
+.leaf:nth-child(9n){
+
+    filter:saturate(1.25);
+
+}
+.glow-particle{
+    position:absolute;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#fff9d0;
+    animation:glowFloat linear infinite;
+}
+
+.particle-1{
+    left:8%;
+    top:30%;
+    animation-delay:0s;
+    animation-duration:14s;
+}
+
+.particle-2{
+    left:15%;
+    top:42%;
+    animation-delay:3s;
+    animation-duration:16s;
+}
+
+.particle-3{
+    left:22%;
+    top:58%;
+    animation-delay:5s;
+    animation-duration:15s;
+}
+
+/* Continue until particle-24 */

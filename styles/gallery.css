@@ -1,0 +1,1933 @@
+/* ==========================================================
+   RESET
+========================================================== */
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:#efe7dd;
+
+    color:#4c3b31;
+
+    font-family:
+        "Cormorant Garamond",
+        "EB Garamond",
+        serif;
+
+    -webkit-font-smoothing:antialiased;
+
+    text-rendering:optimizeLegibility;
+}
+
+img{
+
+    display:block;
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+}
+
+button{
+
+    font:inherit;
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+}
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+}
+
+/* ==========================================================
+   ROOT VARIABLES
+========================================================== */
+
+:root{
+
+    --gallery-width:1500px;
+
+    --gallery-height:820px;
+
+    --header-height:170px;
+
+    --page-padding:48px;
+
+    --card-width:270px;
+
+    --card-height:340px;
+
+    --photo-width:190px;
+
+    --photo-height:190px;
+
+    --radius:14px;
+
+    --shadow-soft:
+        0 10px 24px rgba(0,0,0,.10);
+
+    --shadow-medium:
+        0 18px 40px rgba(0,0,0,.15);
+
+    --shadow-paper:
+        0 8px 18px rgba(0,0,0,.12);
+
+    --text-dark:#4b3b30;
+
+    --text-light:#7b6a5d;
+
+    --accent:#b68a5d;
+
+    --paper:#fdf8ef;
+
+    --transition:.35s ease;
+}
+
+/* ==========================================================
+   PAGE
+========================================================== */
+
+.gallery-page{
+
+    position:relative;
+
+    width:100vw;
+
+    height:100dvh;
+
+    overflow:hidden;
+
+    isolation:isolate;
+
+    background:#efe7dd;
+}
+
+/* ==========================================================
+   CONTENT LAYER
+========================================================== */
+
+.gallery-page > *{
+
+    position:absolute;
+}
+
+/* ==========================================================
+   IMAGE DEFAULTS
+========================================================== */
+
+.memory-paper,
+.memory-photo,
+.memory-rope,
+.memory-clothespin,
+.memory-tape,
+.memory-ribbon,
+.memory-flower,
+.memory-stamp,
+.memory-wax{
+
+    pointer-events:none;
+
+    user-select:none;
+}
+
+/* ==========================================================
+   Z INDEX SCALE
+========================================================== */
+.gallery-decorations-back{
+
+    z-index:2;
+
+}
+
+.gallery-decorations-front{
+
+    z-index:8;
+
+}
+
+.gallery-background{
+
+    z-index:0;
+}
+
+.gallery-decorations{
+
+    z-index:2;
+}
+
+.gallery-wall{
+
+    z-index:5;
+}
+
+.gallery-header{
+
+    z-index:15;
+}
+
+.gallery-progress{
+
+    z-index:20;
+}
+
+.gallery-continue-button{
+
+    z-index:25;
+}
+/* ==========================================================
+   BACKGROUND
+========================================================== */
+
+.gallery-background{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    user-select:none;
+}
+
+/* ==========================================================
+   WALL IMAGE
+========================================================== */
+
+.gallery-background-image{
+
+    object-fit:cover;
+
+    object-position:center;
+
+    transform:scale(1.03);
+
+    filter:
+
+        brightness(.92)
+
+         contrast(1.05)
+
+        saturate(.95);
+}
+
+/* ==========================================================
+   WARM PAPER OVERLAY
+========================================================== */
+
+.gallery-background-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            rgba(255,248,239,.12) 0%,
+
+            rgba(247,238,225,.08) 40%,
+
+            rgba(238,228,214,.14) 100%
+
+        );
+
+    mix-blend-mode:soft-light;
+}
+
+/* ==========================================================
+   AMBIENT LIGHT
+========================================================== */
+
+.gallery-background-light{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(
+
+            circle at 20% 18%,
+
+            rgba(255,255,255,.24),
+
+            transparent 34%
+
+        ),
+
+        radial-gradient(
+
+            circle at 80% 22%,
+
+            rgba(255,244,223,.18),
+
+            transparent 38%
+
+        ),
+
+        radial-gradient(
+
+            circle at 52% 90%,
+
+            rgba(255,255,255,.10),
+
+            transparent 42%
+
+        );
+
+    mix-blend-mode:screen;
+
+    opacity:.9;
+}
+
+/* ==========================================================
+   VIGNETTE
+========================================================== */
+
+.gallery-background-vignette{
+
+    position:absolute;
+
+    inset:0;
+
+    box-shadow:
+
+        inset 0 0 180px rgba(0,0,0,.10),
+
+        inset 0 0 320px rgba(0,0,0,.08);
+
+}
+
+/* ==========================================================
+   PAPER GRAIN
+========================================================== */
+
+.gallery-background::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:.05;
+
+    background-image:
+
+        radial-gradient(
+
+            rgba(0,0,0,.18) .4px,
+
+            transparent .4px
+
+        );
+
+    background-size:
+
+        7px 7px;
+
+    mix-blend-mode:multiply;
+}
+/* ==========================================================
+   PAGE DECORATIONS
+========================================================== */
+
+.gallery-decorations{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+}
+
+/* ==========================================================
+   COMMON
+========================================================== */
+
+.gallery-decorations > div{
+
+    position:absolute;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    will-change:transform;
+}
+
+.gallery-decorations img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    user-select:none;
+
+    pointer-events:none;
+}
+
+/* ==========================================================
+   CORNERS
+========================================================== */
+
+.corner{
+
+     width:150px;
+
+    height:150px;
+
+
+    opacity:.96;
+}
+
+.corner-top-left{
+
+     top:-18px;
+    left:-18px;
+}
+
+.corner-top-right{
+
+     top:-20px;
+
+    right:-20px;
+}
+
+.corner-bottom-left{
+
+    left:0;
+
+    bottom:0;
+}
+
+.corner-bottom-right{
+
+    right:0;
+
+    bottom:0;
+}
+
+/* ==========================================================
+   BOTANICAL
+========================================================== */
+
+.botanical-piece{
+
+         left:58%;
+    bottom:55px;
+
+    width:180px;
+    height:180px;
+
+    opacity:.65;
+
+}
+/* ==========================================================
+   FEATHER
+========================================================== */
+
+.page-feather{
+
+       top:235px;
+
+    right:215px;
+
+    width:80px;
+
+    opacity:.72;
+
+    transform:rotate(-30deg);
+
+     animation: featherFloat 9s ease-in-out infinite;
+
+}
+
+/* ==========================================================
+   FLOWERS
+========================================================== */
+
+.page-flower{
+
+    opacity:.72;
+
+    transition:.35s;
+
+    filter:
+        drop-shadow(
+            0 8px 14px rgba(0,0,0,.08)
+        );
+
+        animation: flowerFloat 12s ease-in-out infinite;
+
+}
+
+
+
+.lavender{
+
+   top:170px;
+
+    right:165px;
+
+    width:70px;
+
+    opacity:.65;
+
+    transform:rotate(-8deg);
+
+}
+
+
+
+.eucalyptus{
+
+        left:56%;
+
+    bottom:58px;
+
+    width:95px;
+
+    opacity:.72;
+
+}
+
+/* ==========================================================
+   SUBTLE FLOAT
+========================================================== */
+
+.page-feather,
+.page-flower{
+
+    animation:
+
+         galleryFloat 8s ease-in-out infinite;
+}
+
+@keyframes galleryFloat{
+
+    0%{
+
+        transform:
+
+            translateY(0);
+
+    }
+
+    50%{
+
+        transform:
+
+            translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.gallery-header{
+
+    position:absolute;
+
+    top:25px;
+
+    left:75%;
+
+    transform:translateX(-50%);
+
+    width:600px;
+
+    text-align:center;
+
+    z-index:20;
+}
+
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+.gallery-title{
+
+    font-family:
+
+        "Cormorant Garamond",
+
+        serif;
+
+     font-size: clamp(2.6rem, 3.5vw, 3.8rem);
+
+    font-weight:600;
+
+    color:var(--text-dark);
+
+    letter-spacing:.04em;
+
+    line-height:1.1;
+
+    text-shadow:
+
+        0 2px 6px rgba(255,255,255,.25);
+}
+
+/* ==========================================================
+   DIVIDER
+========================================================== */
+
+.gallery-divider{
+
+    width:90px;
+
+    height:2px;
+
+   margin:10px auto 12px;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        to right,
+        transparent,
+        rgba(182,138,93,.9),
+        transparent
+    );
+
+    transform-origin:center;
+}
+
+/* ==========================================================
+   SUBTITLE
+========================================================== */
+
+.gallery-subtitle{
+
+     max-width:520px;
+
+      top: 132px;
+
+   font-size: .95rem;
+
+     margin-inline:auto;
+
+      margin-top:0;
+
+    line-height:1.8;
+
+    color:var(--text-light);
+
+    font-style:italic;
+}
+/* ==========================================================
+   GALLERY WALL
+========================================================== */
+
+.gallery-wall{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+}
+
+/* ==========================================================
+   SCRAPBOOK CANVAS
+========================================================== */
+
+.gallery-wall-inner{
+
+    position:relative;
+
+    width:1320px;
+
+    height:720px;
+
+    transform-origin:center center;
+
+    transform:translateX(-30px) scale(.92);
+
+}
+
+/* ==========================================================
+   MEMORY CARD
+========================================================== */
+
+.memory-card{
+
+    position:absolute;
+
+    left:var(--card-x);
+
+    top:var(--card-y);
+
+    transform:
+
+        translate(-50%,-50%)
+
+        rotate(var(--card-rotation));
+
+    transform-origin:center;
+
+    width:var(--card-width);
+
+    pointer-events:auto;
+
+    cursor:pointer;
+
+    transition:
+
+        transform .35s ease,
+
+        filter .35s ease,
+
+        box-shadow .35s ease;
+
+    will-change:transform;
+}
+
+/* ==========================================================
+   INNER
+========================================================== */
+
+.memory-card-inner{
+
+    position:relative;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+/* ==========================================================
+   HOVER
+========================================================== */
+
+.memory-card:hover{
+
+    filter:
+
+        drop-shadow(
+
+            0 18px 28px rgba(0,0,0,.18)
+
+        );
+}
+/* ==========================================================
+   MEMORY CARD FOUNDATION
+========================================================== */
+
+.memory-card{
+
+    position:absolute;
+
+    left:var(--card-x);
+
+    top:var(--card-y);
+
+    transform:
+        translate(-50%,-50%)
+        rotate(var(--card-rotation));
+
+    width:var(--card-width);
+
+    transform-origin:center;
+
+    user-select:none;
+
+    cursor:pointer;
+
+    will-change:transform;
+
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+}
+
+/* ==========================================================
+   INNER
+========================================================== */
+
+.memory-card-inner{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:var(--card-height);
+
+}
+
+/* ==========================================================
+   PAPER
+========================================================== */
+
+.memory-paper{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:auto;
+
+    object-fit:contain;
+
+    filter:
+
+        drop-shadow(
+            0 8px 18px rgba(0,0,0,.14)
+        );
+
+    z-index:1;
+}
+
+/* ==========================================================
+   FIGURE
+========================================================== */
+
+.memory-figure{
+
+    position:relative;
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    padding:
+
+        26px
+        22px
+        24px;
+
+    z-index:10;
+}
+
+/* ==========================================================
+   PHOTO
+========================================================== */
+
+.memory-photo{
+
+    width:var(--photo-width);
+
+    height:var(--photo-height);
+
+    object-fit:cover;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    box-shadow:
+
+        0 8px 20px rgba(0,0,0,.14);
+
+}
+
+/* ==========================================================
+   CAPTION
+========================================================== */
+
+.memory-caption{
+
+    margin-top:18px;
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:8px;
+
+    text-align:center;
+}
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+.memory-title{
+
+    font-family:
+
+        "Cormorant Garamond",
+
+        serif;
+
+    font-size:1.55rem;
+
+    font-weight:600;
+
+    color:var(--text-dark);
+
+    line-height:1.2;
+}
+
+/* ==========================================================
+   SUBTITLE
+========================================================== */
+
+.memory-subtitle{
+
+    font-size:.92rem;
+
+    line-height:1.6;
+
+    color:var(--text-light);
+
+    max-width:210px;
+}
+
+/* ==========================================================
+   META
+========================================================== */
+
+.memory-meta{
+
+    margin-top:4px;
+
+    font-size:.78rem;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+
+    color:#8f7c6c;
+}
+/* ==========================================================
+   MEMORY DECORATIONS
+========================================================== */
+
+/* ==========================================================
+   ROPE
+========================================================== */
+
+.memory-rope{
+
+    position:absolute;
+
+    top:-12px;
+
+    left:50%;
+
+    width:180px;
+
+    height:auto;
+
+    transform:translateX(-50%);
+
+    z-index:20;
+}
+
+/* ==========================================================
+   CLOTHESPIN
+========================================================== */
+
+.memory-clothespin{
+
+    position:absolute;
+
+    top:-18px;
+
+    left:50%;
+
+    width:42px;
+
+    height:auto;
+
+    transform:translateX(-50%);
+
+    z-index:25;
+}
+
+/* ==========================================================
+   TAPE
+========================================================== */
+
+.memory-tape{
+
+    position:absolute;
+
+    top:-12px;
+
+    left:50%;
+
+    width:86px;
+
+    height:auto;
+
+    transform:
+        translateX(-50%)
+        rotate(-6deg);
+
+    z-index:22;
+}
+
+/* ==========================================================
+   RIBBON
+========================================================== */
+
+.memory-ribbon{
+
+    position:absolute;
+
+    top:-18px;
+
+    right:-16px;
+
+    width:82px;
+
+    height:auto;
+
+    z-index:24;
+}
+
+/* ==========================================================
+   FLOWER
+========================================================== */
+
+.memory-flower{
+
+    position:absolute;
+
+    right:-18px;
+
+    bottom:18px;
+
+    width:78px;
+
+    height:auto;
+
+    z-index:18;
+}
+
+/* ==========================================================
+   STAMP
+========================================================== */
+
+.memory-stamp{
+
+    position:absolute;
+
+    top:16px;
+
+    right:18px;
+
+    width:58px;
+
+    height:auto;
+
+    opacity:.92;
+
+    transform:rotate(10deg);
+
+    z-index:19;
+}
+
+/* ==========================================================
+   WAX SEAL
+========================================================== */
+
+.memory-wax{
+
+    position:absolute;
+
+    bottom:16px;
+
+    left:18px;
+
+    width:56px;
+
+    height:auto;
+
+    z-index:19;
+}
+
+/* ==========================================================
+   SHADOWS
+========================================================== */
+
+.memory-paper{
+
+    filter:
+        drop-shadow(
+            0 10px 22px rgba(0,0,0,.14)
+        );
+}
+
+.memory-photo{
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.18);
+}
+
+/* ==========================================================
+   HOVER
+========================================================== */
+
+.memory-card:hover .memory-paper{
+
+    filter:
+        drop-shadow(
+            0 18px 34px rgba(0,0,0,.18)
+        );
+}
+
+.memory-card:hover .memory-photo{
+
+    transform:scale(1.02);
+
+    transition:transform .35s ease;
+}
+/* ==========================================================
+   SCRAPBOOK STYLE VARIANTS
+========================================================== */
+
+/* ==========================================================
+   POLAROID
+========================================================== */
+
+.memory-card--polaroid .memory-figure{
+
+    padding:
+        18px
+        18px
+        42px;
+
+}
+
+.memory-card--polaroid .memory-photo{
+
+    border:8px solid #ffffff;
+
+    border-bottom-width:34px;
+
+    border-radius:2px;
+
+    background:#ffffff;
+
+}
+
+.memory-card--polaroid .memory-caption{
+
+    margin-top:10px;
+}
+
+/* ==========================================================
+   VINTAGE
+========================================================== */
+
+.memory-card--vintage .memory-paper{
+
+    filter:
+
+        sepia(.18)
+
+        saturate(.92)
+
+        drop-shadow(
+            0 12px 24px rgba(0,0,0,.18)
+        );
+
+}
+
+.memory-card--vintage .memory-photo{
+
+    filter:
+
+        sepia(.12)
+
+        contrast(1.02);
+
+    border-radius:4px;
+
+}
+
+.memory-card--vintage .memory-title{
+
+    letter-spacing:.03em;
+
+}
+
+/* ==========================================================
+   JOURNAL
+========================================================== */
+
+.memory-card--journal .memory-caption{
+
+    align-items:flex-start;
+
+    text-align:left;
+
+    padding-inline:10px;
+
+}
+
+.memory-card--journal .memory-title{
+
+    width:100%;
+
+}
+
+.memory-card--journal .memory-subtitle{
+
+    max-width:none;
+
+}
+
+.memory-card--journal .memory-meta{
+
+    margin-top:8px;
+
+}
+
+/* ==========================================================
+   ROPE
+========================================================== */
+
+.memory-card--rope .memory-figure{
+
+    padding-top:44px;
+
+}
+
+.memory-card--rope .memory-photo{
+
+    transform:translateY(8px);
+
+}
+
+/* ==========================================================
+   TAPE
+========================================================== */
+
+.memory-card--tape .memory-figure{
+
+    padding-top:22px;
+
+}
+
+.memory-card--tape .memory-tape{
+
+    top:-6px;
+
+    transform:
+
+        translateX(-50%)
+
+        rotate(-4deg);
+
+}
+
+/* ==========================================================
+   RIBBON
+========================================================== */
+
+.memory-card--tape .memory-ribbon,
+
+.memory-card--vintage .memory-ribbon{
+
+    right:-12px;
+
+    top:-12px;
+
+}
+
+/* ==========================================================
+   STAMP
+========================================================== */
+
+.memory-card--vintage .memory-stamp{
+
+    opacity:.75;
+
+    transform:
+
+        rotate(12deg)
+
+        scale(.92);
+
+}
+
+/* ==========================================================
+   WAX SEAL
+========================================================== */
+
+.memory-card--journal .memory-wax{
+
+     right:22px;
+    top:78%;
+
+    width:56px;
+    height:56px;
+
+}
+
+.memory-card--vintage .memory-wax{
+
+   top:-1px;
+    left:18px;
+
+    right:auto;
+    bottom:auto;
+
+    width:58px;
+    height:58px;
+
+}
+
+/* ==========================================================
+   FLOWER
+========================================================== */
+
+.memory-card--polaroid .memory-flower{
+
+    bottom:8px;
+
+}
+
+.memory-card--journal .memory-flower{
+
+    right:-14px;
+
+    bottom:24px;
+
+}
+
+.memory-card--vintage .memory-flower{
+
+    bottom:12px;
+
+}
+
+/* ==========================================================
+   HOVER
+========================================================== */
+
+.memory-card:hover{
+
+    transform:
+
+        translate(-50%,-50%)
+
+        rotate(var(--card-rotation))
+
+        scale(1.03);
+
+}
+
+.memory-card:hover .memory-photo{
+
+    transform:scale(1.02);
+
+}
+
+.memory-card--rope:hover .memory-photo{
+
+    transform:
+
+        translateY(8px)
+
+        scale(1.02);
+
+}
+
+.memory-card:hover .memory-flower{
+
+    transform:
+
+        rotate(6deg)
+
+        scale(1.05);
+
+    transition:transform .35s ease;
+
+}
+
+.memory-card:hover .memory-ribbon{
+
+    transform:
+
+        rotate(-4deg)
+
+        scale(1.04);
+
+    transition:transform .35s ease;
+
+}
+/* ==========================================================
+   PROGRESS TRACKER
+========================================================== */
+
+.gallery-progress{
+
+    position:absolute;
+
+    left:28px;
+
+     bottom:28px;
+
+    width:240px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    padding:18px 20px;
+
+    border-radius:18px;
+
+     background: rgba(255,250,245,.9);
+
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+
+        0 12px 30px rgba(0,0,0,.12);
+
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.gallery-progress-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.gallery-progress-label{
+
+    font-size:.78rem;
+
+    font-weight:600;
+
+    letter-spacing:.12em;
+
+    text-transform:uppercase;
+
+    color:#887261;
+
+}
+
+.gallery-progress-count{
+
+    font-size:.92rem;
+
+    font-weight:700;
+
+    color:#4c3b31;
+
+}
+
+/* ==========================================================
+   TRACK
+========================================================== */
+
+.gallery-progress-track{
+
+    position:relative;
+
+    width:100%;
+
+    height:8px;
+
+    overflow:hidden;
+
+    border-radius:999px;
+
+    background:
+
+        rgba(205,189,171,.28);
+
+}
+
+/* ==========================================================
+   FILL
+========================================================== */
+
+.gallery-progress-fill{
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    height:100%;
+
+    width:0;
+
+    border-radius:999px;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            #d7b88a,
+
+            #b98958
+
+        );
+
+    transition:
+
+        width .45s ease;
+
+}
+
+/* ==========================================================
+   SHINE
+========================================================== */
+
+.gallery-progress-fill::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(255,255,255,.45),
+
+            transparent
+
+        );
+
+    animation:
+
+        progressShine 3s linear infinite;
+
+}
+
+@keyframes progressShine{
+
+    from{
+
+        transform:translateX(-100%);
+
+    }
+
+    to{
+
+        transform:translateX(100%);
+
+    }
+
+}
+/* ==========================================================
+   CONTINUE BUTTON
+========================================================== */
+
+.gallery-continue-button{
+
+    position:absolute;
+
+    right: 36px;
+
+    bottom: 32px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:14px;
+
+    min-width:220px;
+
+    height:58px;
+
+    padding:0 28px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:
+
+        rgba(255,250,245,.82);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+
+        0 14px 30px rgba(0,0,0,.12);
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    transition:
+
+        transform .35s ease,
+
+        background .35s ease,
+
+        box-shadow .35s ease;
+
+}
+
+/* ==========================================================
+   HOVER
+========================================================== */
+
+.gallery-continue-button:hover{
+
+    background:
+
+        rgba(255,255,255,.92);
+
+    transform:
+
+        translateY(-3px);
+
+    box-shadow:
+
+        0 20px 36px rgba(0,0,0,.16);
+
+}
+
+/* ==========================================================
+   ACTIVE
+========================================================== */
+
+.gallery-continue-button:active{
+
+    transform:
+
+        translateY(0)
+        scale(.98);
+
+}
+
+/* ==========================================================
+   DISABLED
+========================================================== */
+
+.gallery-continue-button:disabled{
+
+    cursor:not-allowed;
+
+    opacity:.55;
+
+    transform:none;
+
+}
+
+/* ==========================================================
+   TEXT
+========================================================== */
+
+.gallery-continue-text{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    letter-spacing:.03em;
+
+    color:var(--text-dark);
+
+    white-space:nowrap;
+
+}
+
+/* ==========================================================
+   ARROW
+========================================================== */
+
+.gallery-continue-arrow{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:1.15rem;
+
+    color:var(--accent);
+
+    transition:
+
+        transform .35s ease;
+
+}
+
+.gallery-continue-button:hover
+.gallery-continue-arrow{
+
+    transform:
+
+        translateX(6px);
+
+}
+
+/* ==========================================================
+   LIGHT EFFECT
+========================================================== */
+
+.gallery-continue-button::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+
+            120deg,
+
+            transparent 0%,
+
+            rgba(255,255,255,.45) 50%,
+
+            transparent 100%
+
+        );
+
+    transform:
+
+        translateX(-140%);
+
+}
+
+.gallery-continue-button:hover::before{
+
+    animation:
+
+        continueShine .9s ease;
+
+}
+
+@keyframes continueShine{
+
+    from{
+
+        transform:
+
+            translateX(-140%);
+
+    }
+
+    to{
+
+        transform:
+
+            translateX(140%);
+
+    }
+
+}
+
+/* ==========================================================
+   FOCUS
+========================================================== */
+
+.gallery-continue-button:focus-visible{
+
+    outline:2px solid var(--accent);
+
+    outline-offset:5px;
+
+}
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+/* ==========================================================
+   LARGE DESKTOP
+========================================================== */
+
+@media (min-width:1700px){
+
+    .gallery-wall-inner{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================================================
+   DESKTOP
+========================================================== */
+
+@media (max-width:1600px){
+
+    .gallery-wall-inner{
+
+        transform:scale(.90);
+
+    }
+
+}
+
+
+/* ==========================================================
+   LAPTOP
+========================================================== */
+
+@media (max-width:1440px){
+
+    .gallery-wall-inner{
+
+        transform:scale(.82);
+
+    }
+
+}
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width:1024px){
+
+    .gallery-wall-inner{
+
+        transform:scale(.60);
+
+    }
+
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width:768px){
+
+    .gallery-wall-inner{
+
+        transform:scale(.48);
+
+    }
+
+}
+
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
+@media (max-width:480px){
+
+    .gallery-wall-inner{
+
+        transform:scale(.36);
+
+    }
+
+}
+
+/* ==========================================================
+   VERY SMALL DEVICES
+========================================================== */
+
+@media (max-width:360px){
+
+    .gallery-wall-inner{
+
+        transform:scale(.36);
+
+    }
+
+}

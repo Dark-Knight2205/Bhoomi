@@ -1,0 +1,934 @@
+/* ==========================================================
+   GOOGLE FONT
+========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Great+Vibes&display=swap");
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+}
+
+body{
+
+    overflow:hidden;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+}
+
+/* ==========================================================
+   PAGE
+========================================================== */
+
+.ending-page{
+
+    position:relative;
+
+    width:100vw;
+    height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    isolation:isolate;
+
+    background:#111;
+
+}
+
+/* ==========================================================
+   BACKGROUND
+========================================================== */
+
+.ending-background{
+
+    object-fit:cover;
+
+    object-position:center center;
+
+    z-index:0;
+
+    animation:
+
+backgroundZoom
+
+40s
+
+ease-in-out
+
+infinite alternate;
+
+}
+
+@keyframes backgroundZoom{
+
+    from{
+
+        transform:scale(1);
+
+    }
+
+    to{
+
+        transform:scale((1.03));
+
+    }
+
+}
+
+/* ==========================================================
+   DARK OVERLAY
+========================================================== */
+
+.ending-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:1;
+
+    background:
+
+        linear-gradient(
+
+            to bottom,
+
+           rgba(25,20,18,.16)
+
+            rgba(255,239,230,.06),
+
+            rgba(18,18,18,.10)
+
+        );
+
+}
+
+/* ==========================================================
+   VIGNETTE
+========================================================== */
+
+.ending-vignette{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:2;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            transparent 45%,
+
+            rgba(0,0,0,.28) 100%
+
+        );
+
+}
+
+/* ==========================================================
+   SUNLIGHT
+========================================================== */
+
+.ending-light{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:3;
+
+    pointer-events:none;
+
+    mix-blend-mode:screen;
+
+    background:
+
+        radial-gradient(
+
+            circle at 12% 30%,
+
+            rgba(255,247,205,.55),
+
+            transparent 52%
+
+        );
+
+    animation:
+
+        sunlight
+
+        8s
+
+        ease-in-out
+
+        infinite alternate;
+
+}
+
+@keyframes sunlight{
+
+    from{
+
+        opacity:.65;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================================================
+   CONTENT WRAPPER
+========================================================== */
+
+.ending-content{
+
+    position:relative;
+
+    z-index:20;
+
+    width:min(680px,90vw);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    margin-top:70px;
+
+}/* ==========================================================
+   HERO
+========================================================== */
+
+.ending-hero{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin-bottom:26px;
+
+    text-align:center;
+
+    animation:
+        heroFade
+        1.2s
+        ease-out
+        forwards;
+
+}
+
+@keyframes heroFade{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+   LABEL
+========================================================== */
+
+.ending-label{
+
+    font-size:.82rem;
+
+    letter-spacing:.38em;
+
+    text-transform:uppercase;
+
+    font-weight:600;
+
+    color:rgba(255,255,255,.82);
+
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.22);
+
+}
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+.ending-hero h1{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(3.2rem,5vw,4.8rem);
+
+    font-weight:700;
+
+    line-height:1;
+
+    color:#ffffff;
+
+    text-align:center;
+
+    letter-spacing:-.02em;
+
+    text-shadow:
+
+        0 4px 14px rgba(0,0,0,.24),
+
+        0 12px 36px rgba(0,0,0,.22);
+
+}
+
+/* ==========================================================
+   SUBTITLE
+========================================================== */
+
+.ending-hero p{
+
+    max-width:520px;
+
+    font-size:1.18rem;
+
+    line-height:1.75;
+
+    font-style:italic;
+
+    color:rgba(255,255,255,.94);
+
+    text-shadow:
+
+        0 3px 10px rgba(0,0,0,.24);
+
+}
+
+/* ==========================================================
+   DIVIDER
+========================================================== */
+
+.ending-hero::after{
+
+    content:"";
+
+    width:70px;
+
+    height:1px;
+
+    margin-top:8px;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            rgba(255,255,255,.85),
+            transparent
+        );
+
+    opacity:.8;
+
+}/* ==========================================================
+   MESSAGE CARD
+========================================================== */
+
+.ending-card{
+
+    position:relative;
+
+    width:min(600px,88vw);
+
+    padding:28px 36px;
+
+    border-radius:26px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            rgba(255,255,255,.48),
+
+           rgba(255,250,247,.76)
+
+        );
+
+    backdrop-filter:blur(16px);
+
+    -webkit-backdrop-filter:blur(16px);
+
+    border:
+
+1px solid rgba(255,255,255,.52);
+
+    box-shadow:
+
+        0 25px 65px rgba(25,22,20,.10),
+
+       0 60px 120px rgba(25,22,20,.08),
+
+        inset 0 1px 0 rgba(255,255,255,.55);
+
+    overflow:hidden;
+
+}
+
+/* ==========================================================
+   PAPER TEXTURE
+========================================================== */
+
+.ending-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.08;
+
+    background:
+
+        radial-gradient(circle at 20% 25%,rgba(255,255,255,.7) 1px,transparent 1px),
+
+        radial-gradient(circle at 70% 55%,rgba(255,255,255,.45) 1px,transparent 1px),
+
+        radial-gradient(circle at 40% 85%,rgba(255,255,255,.35) 1px,transparent 1px);
+
+    background-size:
+
+        24px 24px,
+
+        30px 30px,
+
+        20px 20px;
+
+}
+
+/* ==========================================================
+   MESSAGE
+========================================================== */
+
+.ending-paragraph{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:1.08rem;
+
+    line-height:1.62;
+
+    color:#4b3e38;
+
+    text-align:center;
+
+    letter-spacing:.02em;
+
+    margin:0;
+
+}
+
+/* spacing */
+
+.ending-paragraph + .ending-paragraph{
+
+    margin-top:8px;
+
+}
+
+/* ==========================================================
+   SIGNATURE
+========================================================== */
+
+.ending-signature{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:16px;
+
+    text-align:right;
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:2.5rem;
+
+    color:#b46b87;
+
+}
+
+/* ==========================================================
+   CARD SHADOW
+========================================================== */
+
+.ending-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:-24px;
+
+    transform:translateX(-50%);
+
+    width:70%;
+
+    height:22px;
+
+    border-radius:999px;
+
+    background:rgba(0,0,0,.16);
+
+    filter:blur(22px);
+
+    z-index:-1;
+
+}
+
+/* ==========================================================
+   CARD APPEAR
+========================================================== */
+
+.ending-card{
+
+    animation:
+
+        cardRise
+
+        1s
+
+        ease-out
+
+        .25s
+
+        both;
+
+}
+
+@keyframes cardRise{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(30px)
+
+            scale(.98);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0)
+
+            scale(1);
+
+    }
+
+}
+/* ==========================================================
+   FLOATING PETALS
+========================================================== */
+
+.ending-petals{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:8;
+
+}
+
+.petal{
+
+    position:absolute;
+
+    top:-12%;
+
+    left:var(--left);
+
+    width:40px;
+
+    height:40px;
+
+    animation:
+
+        petalFall
+
+        var(--duration)
+
+        linear
+
+        infinite;
+
+    animation-delay:var(--delay);
+
+    will-change:transform;
+
+}
+
+.petal img{
+
+    object-fit:contain;
+
+    pointer-events:none;
+
+    user-select:none;
+
+    filter:
+
+        drop-shadow(0 4px 8px rgba(255,170,195,.30));
+
+}
+
+@keyframes petalFall{
+
+    0%{
+
+        transform:
+            translate3d(0,-12vh,0)
+            rotate(0deg);
+
+        opacity:0;
+
+    }
+
+    8%{
+
+        opacity:1;
+
+    }
+
+    25%{
+
+        transform:
+            translate3d(-20px,25vh,0)
+            rotate(70deg);
+
+    }
+
+    50%{
+
+        transform:
+            translate3d(22px,55vh,0)
+            rotate(170deg);
+
+    }
+
+    75%{
+
+        transform:
+            translate3d(-26px,82vh,0)
+            rotate(260deg);
+
+    }
+
+    100%{
+
+        transform:
+            translate3d(28px,115vh,0)
+            rotate(360deg);
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==========================================================
+   FLOATING DUST
+========================================================== */
+
+.ending-page::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:5;
+
+    opacity:.18;
+
+    background-image:
+
+        radial-gradient(#ffffff 1px,transparent 1px),
+
+        radial-gradient(#fff4d5 .8px,transparent .8px);
+
+    background-size:
+
+        140px 140px,
+
+        190px 190px;
+
+    animation:
+
+        dustFloat
+
+        28s
+
+        linear
+
+        infinite;
+
+}
+
+@keyframes dustFloat{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        transform:translateY(-120px);
+
+    }
+
+}
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+.ending-button{
+
+    margin-top:26px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:16px 40px;
+
+    border:none;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    color:#5a4742;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:1.12rem;
+
+    font-weight:600;
+
+    letter-spacing:.04em;
+
+    box-shadow:
+
+        0 18px 42px rgba(0,0,0,.14);
+
+    transition:
+
+        transform .35s ease,
+
+        box-shadow .35s ease,
+
+        background .35s ease;
+
+}
+
+
+
+.ending-button:hover{
+
+    transform:
+
+        translateY(-3px)
+
+        scale(1.03);
+
+    background:
+
+        rgba(255,255,255,.94);
+
+    box-shadow:
+
+        0 28px 60px rgba(0,0,0,.18);
+
+}
+
+
+
+.ending-button:active{
+
+    transform:
+
+        scale(.97);
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width:900px){
+
+    .ending-content{
+
+        width:min(92vw,620px);
+
+    }
+
+    .ending-card{
+
+        width:100%;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .ending-hero{
+
+        margin-bottom:28px;
+
+    }
+
+    .ending-hero h1{
+
+        font-size:clamp(2.8rem,10vw,3.8rem);
+
+    }
+
+    .ending-hero p{
+
+        font-size:1rem;
+
+    }
+
+    .ending-card{
+
+        padding:26px 22px;
+
+        border-radius:22px;
+
+    }
+
+    .ending-paragraph{
+
+        font-size:1rem;
+
+        line-height:1.7;
+
+    }
+
+    .ending-signature{
+
+        font-size:2.3rem;
+
+    }
+
+    .ending-button{
+
+        width:100%;
+
+        max-width:300px;
+
+        font-size:1rem;
+
+    }
+
+}
+
+@media (prefers-reduced-motion:reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+    }
+
+}

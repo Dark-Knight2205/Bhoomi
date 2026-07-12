@@ -1,0 +1,2217 @@
+/* ===========================================================
+RESET
+=========================================================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html,
+body{
+
+    width:100%;
+
+    height:100%;
+
+    overflow:hidden;
+
+}
+
+/* ===========================================================
+PAGE
+=========================================================== */
+
+.reserved-page{
+
+    position:relative;
+
+    width:100vw;
+
+    height:100vh;
+
+    overflow:hidden;
+
+    background:#efe6d7;
+
+}
+
+/* ===========================================================
+SAFE AREA
+
+Everything must stay inside this.
+=========================================================== */
+
+.reserved-page{
+
+    --safe-top:48px;
+
+    --safe-bottom:42px;
+
+    --safe-side:56px;
+
+}
+
+/* ===========================================================
+BACKGROUND
+=========================================================== */
+
+.reserved-background{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:url("/scrapbook/background.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    filter:
+
+        saturate(.92)
+
+        brightness(1.02);
+
+}
+
+/* ===========================================================
+VIGNETTE
+=========================================================== */
+
+.reserved-background::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            transparent 40%,
+
+            rgba(0,0,0,.12)
+
+        );
+
+}
+
+/* ===========================================================
+PAPER GRAIN
+=========================================================== */
+
+.reserved-background::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        repeating-linear-gradient(
+
+            90deg,
+
+            rgba(255,255,255,.02),
+
+            rgba(255,255,255,.02) 2px,
+
+            transparent 2px,
+
+            transparent 5px
+
+        );
+
+    opacity:.25;
+
+}
+
+/* ===========================================================
+GLOBAL LAYER
+=========================================================== */
+
+.reserved-page>*{
+
+    position:absolute;
+
+}
+
+/* ===========================================================
+NO SCROLL EVER
+=========================================================== */
+
+.reserved-page{
+
+    min-height:100vh;
+
+    max-height:100vh;
+
+}
+/*====================================================*/
+
+.reserved-wrapper{
+
+    position:absolute;
+
+    inset:0;
+
+    transform-style:preserve-3d;
+
+    transition:
+
+        transform .35s ease-out;
+
+}
+/*====================================================*/
+
+.sunlight{
+
+    position:absolute;
+
+    top:-220px;
+
+    left:-220px;
+
+    width:780px;
+
+    height:780px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(255,236,180,.85),
+
+            rgba(255,236,180,.35),
+
+            transparent 72%
+
+        );
+
+    filter:blur(80px);
+
+    animation:
+
+        sunlightMove 16s ease-in-out infinite alternate;
+
+}
+.light-rays{
+
+    position:absolute;
+
+    top:-10%;
+
+    left:-20%;
+
+    width:150%;
+
+    height:150%;
+
+    background:
+
+        repeating-linear-gradient(
+
+            115deg,
+
+            rgba(255,255,255,.08) 0px,
+
+            rgba(255,255,255,.02) 90px,
+
+            transparent 170px
+
+        );
+
+    opacity:.15;
+
+    filter:blur(12px);
+
+    animation:
+
+        raysMove 18s ease-in-out infinite;
+
+}
+.dust-layer{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+}
+
+.dust{
+
+    position:absolute;
+
+    width:4px;
+
+    height:4px;
+
+    border-radius:50%;
+
+    background:#fff5cb;
+
+    opacity:.45;
+
+    box-shadow:
+
+        0 0 12px rgba(255,245,180,.8);
+
+    animation:
+
+        dustFloat linear infinite;
+
+}
+.camera{
+
+    position:absolute;
+
+    top:60px;
+
+    right:120px;
+
+    width:180px;
+
+    z-index:70;
+
+    animation:
+
+        cameraAppear
+
+        .8s ease,
+
+        cameraShake
+
+        .35s
+
+        .65s;
+
+}
+@keyframes cameraShake{
+
+    0%{
+
+        transform:rotate(0deg);
+
+    }
+
+    20%{
+
+        transform:rotate(-4deg);
+
+    }
+
+    40%{
+
+        transform:rotate(4deg);
+
+    }
+
+    60%{
+
+        transform:rotate(-3deg);
+
+    }
+
+    100%{
+
+        transform:rotate(0);
+
+    }
+
+}
+.camera::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:48px;
+
+    top:36px;
+
+    width:24px;
+
+    height:24px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(255,255,255,.95),
+
+            transparent
+
+        );
+
+    animation:
+
+        lensGlow
+
+        5s
+
+        infinite;
+
+}
+
+@keyframes lensGlow{
+
+    0%{
+
+        opacity:0;
+
+    }
+
+    20%{
+
+        opacity:.9;
+
+    }
+
+    40%{
+
+        opacity:0;
+
+    }
+
+    100%{
+
+        opacity:0;
+
+    }
+
+}
+@keyframes sunlightMove{
+
+    from{
+
+        transform:
+
+            translate(-40px,-25px);
+
+    }
+
+    to{
+
+        transform:
+
+            translate(35px,25px);
+
+    }
+
+}
+
+@keyframes raysMove{
+
+    0%{
+
+        transform:
+
+            rotate(-4deg);
+
+    }
+
+    100%{
+
+        transform:
+
+            rotate(4deg);
+
+    }
+
+}
+
+@keyframes dustFloat{
+
+    from{
+
+        transform:
+
+            translateY(0);
+
+        opacity:0;
+
+    }
+
+    20%{
+
+        opacity:.45;
+
+    }
+
+    80%{
+
+        opacity:.45;
+
+    }
+
+    to{
+
+        transform:
+
+            translateY(-90px);
+
+        opacity:0;
+
+    }
+
+}
+
+@keyframes cameraFloat{
+
+    0%,100%{
+
+        transform:
+
+            translateY(0)
+
+            rotate(-2deg);
+
+    }
+
+    50%{
+
+        transform:
+
+            translateY(-10px)
+
+            rotate(2deg);
+
+    }
+
+}
+/*=========================================================
+MEMORY BOARD
+=========================================================*/
+
+.memory-board{
+
+    position:absolute;
+
+    inset:0;
+
+}
+
+/*=========================================================
+POLAROID
+=========================================================*/
+
+.polaroid{
+
+    position:absolute;
+
+    width:270px;
+
+    transform:rotate(var(--rotate));
+
+    opacity:0;
+
+    animation:
+
+        printReveal
+
+        1.2s
+
+        cubic-bezier(.22,1,.36,1)
+
+        forwards;
+
+    animation-delay:var(--delay);
+
+    transition:
+
+        transform .45s,
+
+        box-shadow .45s;
+
+}
+
+.polaroid:hover{
+
+    transform:
+
+        rotate(var(--rotate))
+
+        translateY(-12px)
+
+        scale(1.04);
+
+    z-index:100;
+
+    filter:
+
+        drop-shadow(
+
+            0 24px 35px rgba(0,0,0,.22)
+
+        );
+
+}
+
+.polaroid-frame{
+
+    width:100%;
+
+    height:auto;
+
+    display:block;
+
+}
+
+/*=========================================================
+NEW POLAROID
+=========================================================*/
+
+.polaroid{
+
+    position:absolute;
+
+    width:280px;
+
+    transform:rotate(var(--rotate));
+
+    animation:polaroidReveal .9s ease forwards;
+
+    filter:drop-shadow(0 18px 30px rgba(0,0,0,.18));
+
+}
+
+.polaroid-paper{
+
+    background:#f8f4eb;
+
+    border-radius:3px;
+
+    padding:16px;
+
+    box-shadow:
+
+        0 8px 18px rgba(0,0,0,.15);
+
+}
+
+.polaroid-photo{
+
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:1/1;
+
+    overflow:hidden;
+
+    background:#ddd;
+
+}
+
+.memory-image{
+    object-fit: cover;
+    object-position: center;
+    border-radius:2px;
+    transition:.4s;
+}
+
+.polaroid:hover .memory-image{
+    transform:scale(1.04);
+}
+
+.polaroid-bottom h3{
+
+    font-family:
+
+        "Cormorant Garamond",
+
+        serif;
+
+    font-size:23px;
+
+    color:#4d3727;
+
+}
+
+.polaroid-bottom p{
+
+    margin-top:10px;
+
+    white-space:pre-line;
+
+    font-family:
+
+        "Dancing Script",
+
+        cursive;
+
+    font-size:18px;
+
+    line-height:1.6;
+
+    color:#6c5a4a;
+
+}
+@keyframes handwriting{
+
+    from{
+
+        width:0;
+
+    }
+
+    to{
+
+        width:100%;
+
+    }
+
+}
+/*=========================================================
+POSITIONS
+=========================================================*/
+
+.memory-one{
+
+    top:185px;
+
+    left:160px;
+
+}
+
+.memory-two{
+
+    top:165px;
+
+    right:170px;
+
+}
+
+.memory-three{
+
+    bottom:95px;
+
+    left:260px;
+
+}
+
+.memory-four{
+
+    bottom:90px;
+
+    right:240px;
+
+}
+@keyframes polaroidReveal{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+
+            translateY(120px)
+
+            rotate(calc(var(--rotate) + 18deg))
+
+            scale(.7);
+
+        filter:blur(5px);
+
+    }
+
+    60%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        filter:blur(0);
+
+        transform:
+
+            translateY(0)
+
+            rotate(var(--rotate))
+
+            scale(1);
+
+    }
+
+}
+/*=========================================================
+TAPE
+=========================================================*/
+
+.tape{
+
+    position:absolute;
+
+    z-index:30;
+
+    opacity:.9;
+
+    filter:
+
+        drop-shadow(0 5px 8px rgba(0,0,0,.12));
+
+        animation:
+    
+
+    tapeDrop
+
+    .9s
+
+    ease
+
+    forwards;
+
+}
+@keyframes tapeDrop{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+
+            translateY(-35px)
+
+            rotate(-6deg);
+
+    }
+
+    60%{
+
+        opacity:1;
+
+        transform:
+
+            translateY(6px)
+
+            rotate(2deg);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0)
+
+            rotate(0);
+
+    }
+
+}
+@keyframes tapeDrop{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+
+            translateY(-35px)
+
+            rotate(-6deg);
+
+    }
+
+    60%{
+
+        opacity:1;
+
+        transform:
+
+            translateY(6px)
+
+            rotate(2deg);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0)
+
+            rotate(0);
+
+    }
+
+}
+
+.tape-1{
+
+    top:175px;
+
+    left:255px;
+
+    transform:rotate(-8deg);
+
+}
+
+.tape-2{
+
+    top:165px;
+
+    right:255px;
+
+    transform:rotate(8deg);
+
+}
+
+.tape-3{
+
+    bottom:215px;
+
+    right:335px;
+
+    transform:rotate(-6deg);
+
+}
+/*=========================================================
+CLIPS
+=========================================================*/
+
+.clip{
+
+    position:absolute;
+
+    width:34px;
+
+    animation:
+
+        clipShine
+
+        4s
+
+        infinite;
+
+}
+
+.clip-1{
+
+    bottom:310px;
+
+    left:490px;
+
+    transform:rotate(-12deg);
+
+}
+
+.clip-2{
+
+    bottom:285px;
+
+    right:435px;
+
+    transform:rotate(12deg);
+
+}
+@keyframes clipShine{
+
+    0%{
+
+        filter:brightness(1);
+
+    }
+
+    45%{
+
+        filter:brightness(1);
+
+    }
+
+    50%{
+
+        filter:
+
+            brightness(2.3);
+
+    }
+
+    55%{
+
+        filter:brightness(1);
+
+    }
+
+    100%{
+
+        filter:brightness(1);
+
+    }
+
+}
+/*=========================================================
+FLOWERS
+=========================================================*/
+
+.flower{
+
+    animation:
+
+        flowerFloat
+
+        6s
+
+        ease-in-out
+
+        infinite;
+
+}
+
+.flower:nth-child(2){
+
+    animation-delay:2s;
+}
+
+.flower-1{
+
+    top:110px;
+
+    left:70px;
+
+}
+
+.flower-2{
+
+    bottom:70px;
+
+    right:90px;
+
+    animation-delay:2s;
+
+}
+@keyframes flowerFloat{
+
+    0%{
+
+        transform:
+
+            translateY(0)
+
+            rotate(0);
+
+    }
+
+    50%{
+
+        transform:
+
+            translateY(-8px)
+
+            rotate(4deg);
+
+    }
+
+    100%{
+
+        transform:
+
+            translateY(0)
+
+            rotate(0);
+
+    }
+
+}
+/*=========================================================
+LEAVES
+=========================================================*/
+
+.leaf{
+
+    position:absolute;
+
+    pointer-events:none;
+
+    filter:
+
+        drop-shadow(0 8px 15px rgba(0,0,0,.15));
+
+}
+
+.leaf-1{
+
+    top:250px;
+
+    left:40px;
+
+    transform:rotate(-20deg);
+
+}
+
+.leaf-2{
+
+    bottom:55px;
+
+    left:120px;
+
+    transform:rotate(15deg);
+
+}
+/*=========================================================
+DEPTH
+=========================================================*/
+
+.polaroid{
+
+    filter:
+
+        drop-shadow(
+
+            0 15px 25px rgba(0,0,0,.18)
+
+        );
+
+}
+
+.polaroid:nth-child(odd){
+
+    filter:
+
+        drop-shadow(
+
+            0 18px 28px rgba(0,0,0,.22)
+
+        );
+
+}
+@keyframes flowerFloat{
+
+    0%,100%{
+
+        transform:
+
+            translateY(0)
+
+            rotate(0deg);
+
+    }
+
+    50%{
+
+        transform:
+
+            translateY(-8px)
+
+            rotate(4deg);
+
+    }
+
+}
+/*=========================================================
+CAMERA FLASH
+=========================================================*/
+
+.camera-flash{
+
+    position:absolute;
+
+    inset:0;
+
+    background:white;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:90;
+
+}
+
+.camera-flash.active{
+
+    animation:cameraFlash .28s ease;
+
+}
+
+@keyframes cameraFlash{
+
+    0%{
+
+        opacity:0;
+
+    }
+
+    20%{
+
+        opacity:.95;
+
+    }
+
+    100%{
+
+        opacity:0;
+
+    }
+
+}
+/*=========================================================
+BUTTON
+=========================================================*/
+
+.continue-btn{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:35px;
+
+    transform:translateX(-50%);
+
+    z-index:9999;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:18px 56px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        180deg,
+        #fff4c6,
+        #efd493
+    );
+
+    color:#5a412c;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:24px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.18);
+
+    transition:
+        transform .35s,
+        box-shadow .35s;
+
+}
+
+.continue-btn:hover{
+
+    transform:
+        translateX(-50%)
+        translateY(-5px)
+        scale(1.05);
+
+}
+/*========================================
+LETTER
+========================================*/
+
+.letter-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.25);
+
+    backdrop-filter:blur(5px);
+
+    z-index:250;
+
+}
+
+.letter{
+
+    position:fixed;
+
+    left:50%;
+
+    top:50%;
+
+    transform:
+
+        translate(-50%,-50%);
+
+    width:min(720px,88vw);
+
+    padding:60px;
+
+    background:
+
+        #fdf7ea;
+
+    border-radius:14px;
+
+    box-shadow:
+
+        0 35px 90px rgba(0,0,0,.25);
+
+    z-index:260;
+
+    font-family:
+
+        "Cormorant Garamond",
+
+        serif;
+
+    transform-style:
+
+        preserve-3d;
+
+}
+
+.letter::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:16px;
+
+    border:1px solid
+
+    rgba(90,60,35,.15);
+
+    pointer-events:none;
+
+}
+
+.letter h2{
+
+    font-size:52px;
+
+    color:#5d3d2b;
+
+    margin-bottom:28px;
+
+}
+
+.letter p{
+
+    font-size:28px;
+
+    line-height:1.8;
+
+    color:#6d5443;
+
+}
+
+.letter-next{
+
+    margin-top:40px;
+
+    border:none;
+
+    padding:
+
+        16px 42px;
+
+    border-radius:999px;
+
+    background:#f2dca6;
+
+    cursor:pointer;
+
+    font-size:22px;
+
+    transition:.35s;
+
+}
+
+.letter-next:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.letter-button:hover{
+
+    transform:
+
+        translateX(-50%)
+
+        translateY(-6px)
+
+        scale(1.05);
+
+    box-shadow:
+
+        0 25px 45px rgba(0,0,0,.25);
+
+}
+@keyframes buttonAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateX(-50%)
+
+            translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateX(-50%)
+
+            translateY(0);
+
+    }
+
+}
+/* ==========================================================
+HEADER
+========================================================== */
+
+.reserved-header{
+
+    position:absolute;
+
+    top:40px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(90%,700px);
+
+    text-align:center;
+
+    z-index:40;
+
+    animation:headerFade 1.5s ease;
+
+}
+
+.reserved-subtitle{
+
+    font-family:"Dancing Script",cursive;
+
+    font-size:24px;
+
+    color:#8a6d55;
+
+    margin-bottom:12px;
+
+}
+
+.reserved-header h1{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(48px,4vw,72px);
+
+    color:#4f3828;
+
+    font-weight:600;
+
+    letter-spacing:.5px;
+
+    text-shadow:
+
+        0 2px 8px rgba(255,255,255,.45);
+
+}
+
+.reserved-description{
+
+    margin-top:18px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    color:#6a5647;
+
+}
+@keyframes headerFade{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateX(-50%)
+
+            translateY(-25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateX(-50%)
+
+            translateY(0);
+
+    }
+
+}
+/*==================================================
+CAMERA
+==================================================*/
+
+.camera-decoration{
+
+    position:absolute;
+
+    top:4%;
+
+    right:10%;
+
+    width:145px;
+
+    height:auto;
+
+    z-index:45;
+
+    transform:rotate(9deg);
+
+    filter:
+
+        drop-shadow(0 12px 20px rgba(0,0,0,.22));
+
+}
+
+/*==================================================
+CLIPS
+==================================================*/
+
+.pin{
+    position:absolute;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%);
+    width:26px;
+    height:26px;
+    z-index:15;
+    filter:drop-shadow(0 4px 8px rgba(0,0,0,.35));
+}
+
+.clip-one{
+
+    top:42%;
+
+    left:31%;
+
+    transform:rotate(-22deg);
+
+}
+
+.clip-two{
+
+    top:45%;
+
+    right:31%;
+
+    transform:rotate(18deg);
+
+}
+
+.clip-three{
+
+    top:57%;
+
+    left:17%;
+
+    transform:rotate(8deg);
+
+    opacity:.55;
+
+}
+
+.clip-four{
+
+    top:58%;
+
+    right:18%;
+
+    transform:rotate(-12deg);
+
+    opacity:.55;
+
+}
+
+/*==================================================
+FLOWERS
+==================================================*/
+
+.flower{
+
+    position:absolute;
+
+    user-select:none;
+
+    pointer-events:none;
+
+    animation:flowerFloat 8s ease-in-out infinite;
+
+    filter:
+
+        drop-shadow(0 3px 6px rgba(0,0,0,.12));
+
+}
+
+.flower-1{
+
+    top:11%;
+
+    left:4%;
+
+    font-size:58px;
+
+}
+
+.flower-2{
+
+    bottom:8%;
+
+    right:6%;
+
+    font-size:42px;
+
+    animation-delay:2s;
+
+}
+
+.flower-3{
+
+    top:20%;
+
+    right:15%;
+
+    font-size:22px;
+
+    opacity:.55;
+
+}
+
+.flower-4{
+
+    bottom:18%;
+
+    left:12%;
+
+    font-size:28px;
+
+    opacity:.6;
+
+    animation-delay:3s;
+
+}
+
+.flower-5{
+
+    top:58%;
+
+    right:8%;
+
+    font-size:18px;
+
+    opacity:.45;
+
+}
+
+/*==================================================
+FLOWER MOTION
+==================================================*/
+
+@keyframes flowerFloat{
+
+    0%{
+
+        transform:
+
+            translateY(0)
+
+            rotate(0deg);
+
+    }
+
+    50%{
+
+        transform:
+
+            translateY(-8px)
+
+            rotate(5deg);
+
+    }
+
+    100%{
+
+        transform:
+
+            translateY(0)
+
+            rotate(0deg);
+
+    }
+
+}
+/*==================================================
+LEAVES
+==================================================*/
+
+.leaf{
+
+    position:absolute;
+
+    font-size:22px;
+
+    opacity:.45;
+
+    pointer-events:none;
+
+    user-select:none;
+
+    z-index:2;
+
+    animation:leafFloat linear infinite;
+
+}
+
+.leaf-1{
+
+    left:-8%;
+
+    top:15%;
+
+    animation-duration:18s;
+
+}
+
+.leaf-2{
+
+    left:-10%;
+
+    top:38%;
+
+    animation-duration:22s;
+
+    animation-delay:2s;
+
+}
+
+.leaf-3{
+
+    left:-7%;
+
+    top:62%;
+
+    animation-duration:25s;
+
+}
+
+.leaf-4{
+
+    left:-12%;
+
+    top:76%;
+
+    animation-duration:28s;
+
+    animation-delay:5s;
+
+}
+
+.leaf-5{
+
+    left:-10%;
+
+    top:50%;
+
+    animation-duration:20s;
+
+    animation-delay:8s;
+
+}
+
+.leaf-6{
+
+    left:-9%;
+
+    top:8%;
+
+    animation-duration:26s;
+
+    animation-delay:11s;
+
+}
+
+@keyframes leafFloat{
+
+    0%{
+
+        transform:
+
+            translateX(0)
+
+            translateY(0)
+
+            rotate(0deg);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:.45;
+
+    }
+
+    50%{
+
+        transform:
+
+            translateX(55vw)
+
+            translateY(45px)
+
+            rotate(160deg);
+
+    }
+
+    100%{
+
+        transform:
+
+            translateX(115vw)
+
+            translateY(-20px)
+
+            rotate(340deg);
+
+        opacity:0;
+
+    }
+
+}
+
+/*==================================================
+DUST
+==================================================*/
+
+.dust-container{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+}
+
+.dust{
+
+    position:absolute;
+
+    width:4px;
+
+    height:4px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.55);
+
+    animation:dustFloat linear infinite;
+
+}
+
+/* Random Positions */
+
+.dust-0{left:5%;top:88%;animation-duration:16s;}
+.dust-1{left:12%;top:74%;animation-duration:19s;}
+.dust-2{left:18%;top:82%;animation-duration:21s;}
+.dust-3{left:25%;top:70%;animation-duration:18s;}
+.dust-4{left:36%;top:86%;animation-duration:22s;}
+.dust-5{left:45%;top:92%;animation-duration:17s;}
+.dust-6{left:53%;top:80%;animation-duration:23s;}
+.dust-7{left:61%;top:88%;animation-duration:20s;}
+.dust-8{left:70%;top:84%;animation-duration:24s;}
+.dust-9{left:78%;top:90%;animation-duration:19s;}
+.dust-10{left:84%;top:82%;animation-duration:18s;}
+.dust-11{left:92%;top:76%;animation-duration:22s;}
+.dust-12{left:15%;top:95%;animation-duration:25s;}
+.dust-13{left:32%;top:97%;animation-duration:19s;}
+.dust-14{left:47%;top:94%;animation-duration:23s;}
+.dust-15{left:67%;top:98%;animation-duration:21s;}
+.dust-16{left:81%;top:96%;animation-duration:20s;}
+.dust-17{left:95%;top:92%;animation-duration:24s;}
+
+@keyframes dustFloat{
+
+    from{
+
+        transform:
+
+            translateY(0)
+
+            scale(.5);
+
+        opacity:0;
+
+    }
+
+    20%{
+
+        opacity:.18;
+
+    }
+
+    70%{
+
+        opacity:.32;
+
+    }
+
+    to{
+
+        transform:
+
+            translateY(-100vh)
+
+            scale(1.25);
+
+        opacity:0;
+
+    }
+
+}
+
+/*==================================================
+SUNLIGHT
+==================================================*/
+
+.reserved-page::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+        radial-gradient(
+
+            circle at 15% 12%,
+
+            rgba(255,245,185,.48),
+
+            transparent 40%
+
+        );
+
+    mix-blend-mode:screen;
+
+}
+
+.reserved-page::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            transparent 58%,
+
+            rgba(0,0,0,.08)
+
+        );
+
+}
+/*========================================
+PRINT REVEAL
+========================================*/
+
+@keyframes printReveal{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            rotate(var(--rotate))
+
+            translateY(-45px)
+
+            scale(.88);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            rotate(var(--rotate))
+
+            translateY(0)
+
+            scale(1);
+
+    }
+
+}
+
+/*========================================
+PHOTO DEVELOP
+========================================*/
+
+@keyframes photoDevelop{
+
+    0%{
+
+        filter:
+
+            blur(12px)
+
+            brightness(.7)
+
+            saturate(.4);
+
+    }
+
+    60%{
+
+        filter:
+
+            blur(5px)
+
+            brightness(.95);
+
+    }
+
+    100%{
+
+        filter:
+
+            blur(0)
+
+            brightness(1)
+
+            saturate(1);
+
+    }
+
+}
+/*========================================
+CAMERA FLASH
+========================================*/
+
+.camera-flash{
+
+    position:absolute;
+
+    top:110px;
+
+    right:250px;
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:white;
+
+    filter:
+
+        blur(20px);
+
+    z-index:80;
+
+    pointer-events:none;
+
+}
+/*=========================================================
+OPEN LETTER BUTTON
+=========================================================*/
+
+.continue-btn{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:34px;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    padding:18px 56px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        180deg,
+        #fff6d2 0%,
+        #efd28b 100%
+    );
+
+    color:#5b422d;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:25px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.18);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        background .35s ease;
+
+}
+
+.continue-btn:hover{
+
+    transform:
+        translateX(-50%)
+        translateY(-5px)
+        scale(1.03);
+
+    box-shadow:
+        0 22px 45px rgba(0,0,0,.25);
+
+}
+
+.continue-btn:active{
+
+    transform:
+        translateX(-50%)
+        scale(.97);
+
+}
+
+@media (max-width:768px){
+
+    .continue-btn{
+
+        width:88%;
+
+        padding:16px 24px;
+
+        font-size:22px;
+
+        bottom:22px;
+
+    }
+
+}
+.popup-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(12px);
+
+    z-index:1000;
+}
+.popup{
+
+    position:fixed;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    z-index:1001;
+}
+.continue-button{
+
+    position:fixed;
+
+    z-index:50;
+}

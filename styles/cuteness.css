@@ -1,0 +1,1377 @@
+/* =========================================
+   RESET
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    min-height:100%;
+
+    overflow:hidden;
+
+    scroll-behavior:smooth;
+
+}
+
+/* =========================================
+   PAGE
+========================================= */
+
+.cuteness-page{
+
+    position:relative;
+
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at top,#ffeaf4,#ffd8ea),
+    linear-gradient(
+        135deg,
+        #fff8fc,
+        #ffeef6,
+        #ffe1ef
+    ),
+    url("/backgrounds/sakura-bg.png");
+
+    background-size:cover;
+    background-position:center;
+
+}
+
+/* =========================================
+   FLOATING DECORATIONS
+========================================= */
+
+.cuteness-page::before{
+
+    content:"🌸";
+
+    position:absolute;
+
+    top:12%;
+    left:8%;
+
+    font-size:48px;
+
+    opacity:.18;
+
+    animation:floatDecoration 7s ease-in-out infinite;
+
+}
+
+.cuteness-page::after{
+
+    content:"💖";
+
+    position:absolute;
+
+    right:9%;
+    bottom:14%;
+
+    font-size:42px;
+
+    opacity:.18;
+
+    animation:floatDecoration 9s ease-in-out infinite;
+
+}
+
+@keyframes floatDecoration{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-22px);
+
+}
+
+}
+
+/* =========================================
+   GLASS CARD
+========================================= */
+
+.meter-card{
+
+    position:relative;
+
+    width:min(760px,92%);
+
+    min-height:680px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:65px;
+
+    border-radius:38px;
+
+    background:rgba(255,255,255,.22);
+
+    backdrop-filter:blur(28px);
+    -webkit-backdrop-filter:blur(28px);
+
+    border:1px solid rgba(255,255,255,.45);
+
+    box-shadow:
+        0 20px 80px rgba(255,105,180,.18),
+        0 0 60px rgba(255,192,203,.18);
+
+    overflow:hidden;
+
+    animation:cardEntry .9s cubic-bezier(.22,1,.36,1);
+
+}
+
+@keyframes cardEntry{
+
+0%{
+
+opacity:0;
+
+transform:
+translateY(40px)
+scale(.95);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:
+translateY(0)
+scale(1);
+
+}
+
+}
+
+/* =========================================
+   SHINE EFFECT
+========================================= */
+
+.meter-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-50%;
+    left:-50%;
+
+    width:200%;
+    height:200%;
+
+    background:
+
+    linear-gradient(
+
+        120deg,
+
+        transparent,
+
+        rgba(255,255,255,.18),
+
+        transparent
+
+    );
+
+    transform:rotate(25deg);
+
+    animation:shine 8s linear infinite;
+
+    pointer-events:none;
+
+}
+
+@keyframes shine{
+
+0%{
+
+transform:
+translateX(-120%)
+rotate(25deg);
+
+}
+
+100%{
+
+transform:
+translateX(120%)
+rotate(25deg);
+
+}
+
+}
+
+/* =========================================
+   ICON
+========================================= */
+
+.meter-icon{
+
+    font-size:70px;
+
+    margin-bottom:20px;
+
+    animation:bounce 2.5s infinite ease-in-out;
+
+}
+
+@keyframes bounce{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
+.meter-title{
+
+    font-family:var(--font-great-vibes);
+
+    font-size:clamp(72px,9vw,110px);
+
+    color:#4a148c;
+
+    line-height:1;
+
+    text-shadow:
+
+        0 0 18px rgba(186,104,200,.22);
+
+    margin-bottom:28px;
+
+}
+
+/* =========================================
+   SUBTITLE
+========================================= */
+
+.meter-subtitle{
+
+    font-family:var(--font-dancing);
+
+    font-size:clamp(36px,4vw,54px);
+
+    color:#6d4c75;
+
+    line-height:1.45;
+
+    margin-bottom:55px;
+
+}
+
+/* =========================================
+   LET'S CHECK BUTTON
+========================================= */
+
+.check-btn{
+
+    position:relative;
+
+    padding:20px 56px;
+
+    border:none;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-family:var(--font-dancing);
+
+    font-size:34px;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        #ff92c5,
+
+        #ff72b0,
+
+        #d28dff
+
+    );
+
+    box-shadow:
+
+        0 14px 40px rgba(240,98,146,.45),
+
+        0 0 35px rgba(255,150,220,.35);
+
+    overflow:hidden;
+
+    transition:
+        transform .35s,
+        box-shadow .35s;
+
+    animation:
+        glowPulse 2.5s ease-in-out infinite,
+        floatButton 3s ease-in-out infinite;
+
+}
+
+.check-btn:hover{
+
+    transform:
+        translateY(-6px)
+        scale(1.05);
+
+    box-shadow:
+
+        0 24px 60px rgba(240,98,146,.6),
+
+        0 0 50px rgba(255,150,220,.45);
+
+}
+
+.check-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.45),
+
+        transparent
+
+    );
+
+    transform:translateX(-100%);
+
+    animation:buttonShine 3.5s linear infinite;
+
+}
+
+@keyframes buttonShine{
+
+100%{
+
+transform:translateX(100%);
+
+}
+
+}
+
+@keyframes glowPulse{
+
+0%,100%{
+
+box-shadow:
+
+0 14px 40px rgba(240,98,146,.45),
+
+0 0 25px rgba(255,150,220,.35);
+
+}
+
+50%{
+
+box-shadow:
+
+0 22px 60px rgba(240,98,146,.6),
+
+0 0 55px rgba(255,150,220,.45);
+
+}
+
+}
+
+@keyframes floatButton{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-6px);
+
+}
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:768px){
+
+.meter-card{
+
+    width:92%;
+
+    padding:40px 25px;
+
+}
+
+.meter-title{
+
+    font-size:60px;
+
+}
+
+.meter-subtitle{
+
+    font-size:34px;
+
+}
+
+.check-btn{
+
+    font-size:26px;
+
+    padding:16px 38px;
+
+}
+
+}
+/* =========================================
+   METER CONTENT
+========================================= */
+
+.meter-content{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    animation:fadeMeter .5s ease;
+
+}
+
+@keyframes fadeMeter{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* =========================================
+   STATUS TEXT
+========================================= */
+
+.status-text{
+
+    font-family:var(--font-dancing);
+
+    font-size:42px;
+
+    color:#ba68c8;
+
+    margin-bottom:40px;
+
+    text-align:center;
+
+    animation:fadeStatus .5s ease;
+
+}
+
+@keyframes fadeStatus{
+
+from{
+
+opacity:0;
+
+transform:translateY(-12px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* =========================================
+   PERCENTAGE
+========================================= */
+
+.percentage-wrapper{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.percentage-number{
+
+    font-family:"Poppins",sans-serif;
+
+    font-size:130px;
+
+    font-weight:800;
+
+    line-height:1;
+
+    color:#f06292;
+
+    text-shadow:
+
+        0 0 20px rgba(240,98,146,.25);
+
+    transition:.25s;
+
+}
+
+.percentage-symbol{
+
+    font-size:70px;
+
+    margin-left:8px;
+
+}
+
+.percentage-caption{
+
+    margin-top:18px;
+
+    font-family:var(--font-dancing);
+
+    font-size:34px;
+
+    color:#6d4c75;
+
+    text-align:center;
+
+}
+
+/* =========================================
+   PULSE
+========================================= */
+
+.pulse{
+
+    animation:pulseMeter .22s ease;
+
+}
+
+@keyframes pulseMeter{
+
+0%{
+
+transform:scale(.92);
+
+}
+
+60%{
+
+transform:scale(1.15);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* =========================================
+   120%
+========================================= */
+
+.overflow{
+
+    color:#ff3d8f;
+
+    animation:
+
+        overflowGlow .8s infinite alternate,
+
+        overflowScale .6s infinite alternate;
+
+}
+
+@keyframes overflowGlow{
+
+0%{
+
+text-shadow:
+
+0 0 20px rgba(240,98,146,.35);
+
+}
+
+100%{
+
+text-shadow:
+
+0 0 45px rgba(240,98,146,.7),
+
+0 0 70px rgba(186,104,200,.45);
+
+}
+
+}
+
+@keyframes overflowScale{
+
+0%{
+
+transform:scale(1);
+
+}
+
+100%{
+
+transform:scale(1.08);
+
+}
+
+}
+
+/* =========================================
+   PROGRESS BAR
+========================================= */
+
+.progress-track{
+
+    width:88%;
+
+    height:20px;
+
+    margin-top:45px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:
+
+        rgba(255,255,255,.45);
+
+    box-shadow:
+
+        inset 0 2px 10px rgba(0,0,0,.08);
+
+}
+
+.progress-fill{
+
+    height:100%;
+
+    width:0;
+
+    border-radius:999px;
+
+    position:relative;
+
+    transition:width .08s linear;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            #ff8dbd,
+
+            #f06292,
+
+            #d28dff
+
+        );
+
+}
+
+/* =========================================
+   SHINE
+========================================= */
+
+.progress-fill::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(255,255,255,.55),
+
+            transparent
+
+        );
+
+    transform:translateX(-100%);
+
+    animation:progressShine 2s linear infinite;
+
+}
+
+@keyframes progressShine{
+
+100%{
+
+transform:translateX(100%);
+
+}
+
+}
+
+/* =========================================
+   COMPLETE
+========================================= */
+
+.progress-fill.completed{
+
+    animation:
+
+        completedFlash .8s infinite alternate;
+
+}
+
+@keyframes completedFlash{
+
+0%{
+
+filter:brightness(1);
+
+}
+
+100%{
+
+filter:brightness(1.4);
+
+}
+
+}
+
+/* =========================================
+   COMPLETE MESSAGE
+========================================= */
+
+.meter-complete{
+
+    margin-top:28px;
+
+    font-family:var(--font-great-vibes);
+
+    font-size:54px;
+
+    color:#ff4f96;
+
+    animation:
+
+        completePop .7s ease;
+
+}
+
+@keyframes completePop{
+
+0%{
+
+opacity:0;
+
+transform:
+
+translateY(20px)
+
+scale(.7);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:
+
+translateY(0)
+
+scale(1);
+
+}
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:768px){
+
+.status-text{
+
+font-size:30px;
+
+}
+
+.percentage-number{
+
+font-size:82px;
+
+}
+
+.percentage-symbol{
+
+font-size:44px;
+
+}
+
+.percentage-caption{
+
+font-size:24px;
+
+}
+
+.progress-track{
+
+width:95%;
+
+height:16px;
+
+}
+
+.meter-complete{
+
+font-size:36px;
+
+}
+
+}
+/* =========================================
+   WARNING OVERLAY
+========================================= */
+
+.warning-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(255,245,250,.45);
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    z-index:99999;
+
+    animation:overlayFade .35s ease;
+
+}
+
+@keyframes overlayFade{
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+/* =========================================
+   WARNING CARD
+========================================= */
+
+.warning-card{
+
+    position:relative;
+
+    width:min(900px,92%);
+
+    padding:55px;
+
+    text-align:center;
+
+    border-radius:34px;
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(24px);
+
+    border:1px solid rgba(255,255,255,.55);
+
+    box-shadow:
+
+        0 25px 90px rgba(240,98,146,.28),
+
+        0 0 60px rgba(255,182,193,.25);
+
+    overflow:hidden;
+
+}
+
+/* Shine */
+
+.warning-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-50%;
+    left:-50%;
+
+    width:200%;
+    height:200%;
+
+    background:
+
+    linear-gradient(
+
+        120deg,
+
+        transparent,
+
+        rgba(255,255,255,.25),
+
+        transparent
+
+    );
+
+    transform:rotate(25deg);
+
+    animation:warningShine 7s linear infinite;
+
+}
+
+@keyframes warningShine{
+
+0%{
+
+transform:
+
+translateX(-120%)
+
+rotate(25deg);
+
+}
+
+100%{
+
+transform:
+
+translateX(120%)
+
+rotate(25deg);
+
+}
+
+}
+
+/* =========================================
+   WARNING CONTENT
+========================================= */
+
+.warning-icon{
+
+    font-size:72px;
+
+    margin-bottom:18px;
+
+    animation:warningBounce 2s infinite;
+
+}
+
+@keyframes warningBounce{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+}
+
+.warning-card h2{
+
+    font-family:var(--font-great-vibes);
+
+    font-size:72px;
+
+    color:#ff4f96;
+
+    margin-bottom:22px;
+
+}
+
+.warning-card p{
+
+    margin-top:18px;
+
+    font-family:var(--font-dancing);
+
+    font-size:34px;
+
+    line-height:1.5;
+
+    color:#6d4c75;
+
+}
+
+.warning-card strong{
+
+    color:#f06292;
+
+}
+
+.warning-percentage{
+
+    margin:28px 0;
+
+    font-size:96px;
+
+    font-weight:800;
+
+    color:#ff4f96;
+
+    text-shadow:
+
+        0 0 25px rgba(240,98,146,.35);
+
+    animation:
+
+        overflowGlow .8s infinite alternate,
+
+        overflowScale .7s infinite alternate;
+
+}
+
+/* =========================================
+   CONTINUE BUTTON
+========================================= */
+
+.continue-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    min-width:380px;
+
+    height:72px;
+
+    padding:0 42px;
+
+    margin:0 auto;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        135deg,
+        #ff6fa9 0%,
+        #f06292 45%,
+        #c86cf3 100%
+    );
+
+    color:#fff;
+
+    font-family:var(--font-dancing);
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 15px 45px rgba(240,98,146,.35);
+
+    transition:all .35s ease;
+}
+
+.continue-btn:hover{
+
+    transform:translateY(-4px) scale(1.04);
+
+    box-shadow:
+        0 20px 60px rgba(240,98,146,.5);
+
+}
+
+.continue-btn:hover{
+
+    transform:
+
+        translateY(-6px)
+
+        scale(1.05);
+
+    box-shadow:
+
+        0 25px 60px rgba(240,98,146,.6),
+
+        0 0 50px rgba(255,182,193,.5);
+
+}
+
+.continue-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.45),
+
+        transparent
+
+    );
+
+    transform:translateX(-100%);
+
+    animation:buttonShine 3.5s linear infinite;
+
+}
+
+.bottom-area{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:22px 0 30px;
+
+}
+/* =========================================
+   SCREEN SHAKE
+========================================= */
+
+.screen-shake{
+
+    animation:screenShake .45s;
+
+}
+
+@keyframes screenShake{
+
+0%{transform:translateX(0);}
+
+20%{transform:translateX(-6px);}
+
+40%{transform:translateX(6px);}
+
+60%{transform:translateX(-4px);}
+
+80%{transform:translateX(4px);}
+
+100%{transform:translateX(0);}
+
+}
+
+/* =========================================
+   HEART BURST
+========================================= */
+
+.heart-burst{
+
+    position:fixed;
+
+    pointer-events:none;
+
+    z-index:99999;
+
+    font-size:30px;
+
+    animation:heartBurst 1s forwards;
+
+}
+
+@keyframes heartBurst{
+
+0%{
+
+opacity:1;
+
+transform:
+
+translateY(0)
+
+scale(.5);
+
+}
+
+100%{
+
+opacity:0;
+
+transform:
+
+translateY(-180px)
+
+scale(1.8)
+
+rotate(25deg);
+
+}
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:768px){
+
+.warning-card{
+
+padding:35px 24px;
+
+}
+
+.warning-icon{
+
+font-size:54px;
+
+}
+
+.warning-card h2{
+
+font-size:46px;
+
+}
+
+.warning-card p{
+
+font-size:24px;
+
+}
+
+.warning-percentage{
+
+font-size:64px;
+
+}
+
+.continue-btn{
+
+font-size:24px;
+
+padding:16px 38px;
+
+}
+
+}
